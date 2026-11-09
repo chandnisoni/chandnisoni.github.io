@@ -16,7 +16,7 @@ Readers, in priority order: potential cofounders and early hires; YC and acceler
 
 **Persona:** the engineer who tells stories. Warm, builds alone when needed, listens to the reader, ships.
 
-**Metaphor, applied literally:** the site is a short book. The home page is its table of contents and chapters. Project pages are appendices. Posts are later chapters. Running header, chapter numerals, drop caps, margin notes, footnotes for technical detail.
+**Metaphor, applied literally:** the site is a short book. The home page is its table of contents and chapters. Project pages are appendices. Posts are later chapters. Running header, chapter numerals set in the heading itself, drop caps, margin notes, footnotes for technical detail.
 
 **Voice:** warm and plain. First person. Short sentences. No jargon on the home page; stack details go in footnotes or project pages. A little humor. Never a product-page register ("leverage", "empower", "seamless").
 
@@ -87,6 +87,19 @@ Content for each:
 - Asymmetry and white space over symmetry and density.
 - Imperfection is allowed: a margin note, a crossed-out line, a caption in her words.
 
+**AI-tells checklist (Chandni's list, each one a hard rule):**
+
+| tell | rule for this site |
+|---|---|
+| Purple-to-blue glowing gradients | No gradients anywhere. Flat paper, flat ink, one flat accent. |
+| "Card hell" and icon rows | No cards, no icon rows, no badges. Chapters are prose. The "Also built" list is a plain list. |
+| Text eyebrows (small mono labels floating above titles) | Chapter numerals are set *inside* the heading in the serif, book-style ("iii. Fifty books"), never as a small label above it. No category labels above any title anywhere. Status tags on project pages sit inline after the title, in the same serif, in parentheses. |
+| Generic AI imagery | Only photographs Chandni took or appears in, her own screenshots, and ThinkMocha book pages. No generated people, no stock photos, no decorative illustration. The early face-swap experiments in the ThinkMocha archive are banned. |
+| Purposeless whitespace | Every margin has a job: book margins carry margin notes, captions, or footnote numbers. If a gap has nothing in it, the measure shrinks instead. |
+| Vague buzzwords | Every headline and caption names a concrete thing: a plate of vegetables, ten thousand restaurants, fifty books. Banned words: unlock, transform, elevate, empower, leverage, seamless, innovative, passionate, journey. |
+| No real-world presence | Place names and specifics throughout: New York, the kitchen table, a Manhattan preschool, Stern, the SEC feed archive back to 1995. A real photo of her and of where she works. |
+| Interchangeable branding | The swap test (§11): replace the name and photo, and the site must make no sense for anyone else. The vegetables story, the fifty books, and the filings graph are not transferable. |
+
 **Palette (light only, per decision):**
 
 | token | value | use |
@@ -145,6 +158,7 @@ Dark mode. A product page for the Teams chief-of-staff idea. An investing or the
 - A founder who reads the home page can say, in one sentence, what Chandni builds and why, and knows how to reach her.
 - Nothing on the page contradicts the resume or LinkedIn.
 - A stranger shown the site alongside three AI-generated portfolios picks this as the human one.
+- **Swap test:** with the name and photo replaced, the site cannot plausibly belong to any other person. Reviewed against the AI-tells checklist in §6 before launch; any single failure blocks launch.
 - Lighthouse 100/100/100/100 on home and one project page, mobile and desktop.
 - Chandni can add a post by adding one markdown file and pushing.
 
