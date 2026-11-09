@@ -48,9 +48,9 @@ Each chapter is a short section: numeral, title, 60–150 words, at most one ima
 
 **ii. Ten thousand restaurants** (the engineer years). Six years of backend at Rakuten and Serverless: Rakuten Dining and its 10,000+ restaurants, the serverless proof of concept that became company-wide adoption and cut infrastructure costs 80%, billing rebuilt on Stripe at Serverless (98% faster, 95% fewer errors). Footnotes carry the stack. No image, or a single small artifact (a TechCrunch clipping for Slice Watch).
 
-**iii. Fifty books** (ThinkMocha). Built alone: research, product, generative pipeline. Pilot at a Manhattan preschool, 50+ books, 90%+ positive feedback. Honest close: "Then I went to Stern for the Tech MBA, to learn the parts of company-building I didn't have yet." One sentence on EFL screening committee. Link to appendix C.
+**iii. Fifty books** (ThinkMocha). ThinkMocha LLC is Chandni's company, founded 2022 and still hers; the storybooks were its first product. Built alone: research, product, generative pipeline. Pilot at a Manhattan preschool, 50+ books, 90%+ positive feedback. Honest close: "Then I went to Stern for the Tech MBA, to learn the parts of company-building I didn't have yet." One sentence on EFL screening committee. Link to appendix C.
 
-**iv. Reading between the lines** (now). Edgar Miner: SEC filings turned into structured data and a graph of company relationships for investment research. What it does today, honestly labeled *prototype, in progress*. One screenshot. Mention Fundraising Agent in one sentence as the other thing built this year. Link to appendices A and B.
+**iv. Reading between the lines** (now). Edgar Miner, in one line: *it reads every SEC filing so you don't have to.* Underneath: filings turned into structured data and a graph of company relationships, for investment research. Framed as ThinkMocha LLC's second product; the storybooks were the first. What it does today, honestly labeled *prototype, in progress*. One screenshot. Mention Fundraising Agent in one sentence as the other thing built this year. Link to appendices A and B.
 
 **v. The next chapter** (what I'm looking for). The founder statement without naming a market: the next company gets built with people, not alone; what kind of people; an invitation. Contact block: email (chandni@thinkmocha.com), LinkedIn, GitHub, calendar link (placeholder until provided), resume PDF.
 
@@ -155,7 +155,8 @@ The site, the resume (`/Users/chandni/work/life/ChandniSoni-resume-2026-founder.
 
 **Rules:**
 
-- The current venture is named as current work on all three. The site says it in chapter iv and appendix A, the resume in its first project entry, LinkedIn in the headline, About, and a Projects or Experience entry. None of the three may describe Chandni as between ventures while another names a current one.
+- ThinkMocha LLC is one continuous company (2022 to present) on all three surfaces. Its first product (storybooks) is paused; its second (Edgar Miner) is in build. The resume and LinkedIn carry the "2022 to present" dates now; by Chandni's decision (2026-11-09) they do not name Edgar Miner until she says so, while the site does.
+- Once she lifts that hold, the current venture is named as current work on all three. The site says it in chapter iv and appendix A, the resume in its first project entry, LinkedIn in the headline, About, and a Projects or Experience entry. None of the three may describe Chandni as between ventures while another names a current one.
 - Facts, numbers, dates, and status words match exactly across the three. The consistency table in `linkedin-updates.md` is the source of truth; the site adds no metric that isn't in it.
 - Each surface is the entry point for a different reader and hands off to the others: LinkedIn (recruiters, warm intros) links to the site; the site (anyone who was emailed) links to the resume PDF and LinkedIn; the resume (accelerators, EIR programs, hires) links to the site and GitHub.
 - The site gives each audience a one-sentence path in chapter v, in prose, not cards: investors and research clients start at appendix A; people who want to build with her read chapter v and write; recruiters are pointed to the resume. The venture's own product site, when it exists, is linked from appendix A, not duplicated here.
