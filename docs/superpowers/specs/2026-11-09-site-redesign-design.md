@@ -149,6 +149,18 @@ Content for each:
 | Confirmation that chandni@thinkmocha.com receives mail | chapter v | |
 | Calendar link | chapter v | placeholder until then |
 
+## 9a. One story, three surfaces
+
+The site, the resume (`/Users/chandni/work/life/ChandniSoni-resume-2026-founder.docx`), and LinkedIn are three formats of one story, and they will be read together by the same person within minutes: an investor, a client, or a cofounder who got an email about the current venture (Edgar Miner, as of November 2026) and looked Chandni up.
+
+**Rules:**
+
+- The current venture is named as current work on all three. The site says it in chapter iv and appendix A, the resume in its first project entry, LinkedIn in the headline, About, and a Projects or Experience entry. None of the three may describe Chandni as between ventures while another names a current one.
+- Facts, numbers, dates, and status words match exactly across the three. The consistency table in `linkedin-updates.md` is the source of truth; the site adds no metric that isn't in it.
+- Each surface is the entry point for a different reader and hands off to the others: LinkedIn (recruiters, warm intros) links to the site; the site (anyone who was emailed) links to the resume PDF and LinkedIn; the resume (accelerators, EIR programs, hires) links to the site and GitHub.
+- The site gives each audience a one-sentence path in chapter v, in prose, not cards: investors and research clients start at appendix A; people who want to build with her read chapter v and write; recruiters are pointed to the resume. The venture's own product site, when it exists, is linked from appendix A, not duplicated here.
+- When the venture changes, all three are updated in one pass, in this order: spec section 4 chapter iv, appendix content, resume project entry, LinkedIn. A venture change is a content change, not a redesign.
+
 ## 10. Out of scope (for this version)
 
 Dark mode. A product page for the Teams chief-of-staff idea. An investing or thesis page. Newsletter signup (the writing section is built so one can be added). Analytics beyond a privacy-respecting counter if wanted later. Comments.
