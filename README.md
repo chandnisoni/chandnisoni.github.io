@@ -35,4 +35,8 @@ Export the PDF from `ChandniSoni-resume-2026-founder.docx` and save it to both `
 
 ## Launching
 
-See the section added in the deploy task.
+Every push to `master` runs `.github/workflows/deploy.yml`: it installs, runs `npm test` (build plus the HTML checks), and deploys `dist/` to GitHub Pages. The workflow switches the Pages source to "GitHub Actions" on its first run; if that step is refused, set it once by hand in Settings → Pages → Source. Cloudflare in front of the domain needs no change. The `CNAME` file lives in `public/` so the custom domain survives every deploy.
+
+Before adding images: drop the files into `public/images/` and set `image` (chapters) or `media` (work entries) in the markdown frontmatter with `width` and `height`. A figure whose file is missing fails the build on purpose.
+
+When the resume changes, export it from Word to both PDF paths in `public/` (see above) and push.
