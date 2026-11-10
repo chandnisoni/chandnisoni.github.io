@@ -128,3 +128,31 @@ aside.note {
   margin-top: 2.5rem;
 }
 .appendix .back { font-size: 0.9rem; }
+
+/* Writing */
+.post-list { list-style: none; padding: 0; }
+.post-list li { margin-bottom: 1.5rem; }
+.post-list a { font-size: 1.15em; }
+.post-list .meta { margin-left: 0.6rem; }
+.post .meta { margin-top: -0.5rem; margin-bottom: 1.5rem; }
+button.yt {
+  position: relative;
+  display: block;
+  padding: 0;
+  margin: 2rem 0;
+  border: 1px solid var(--rule);
+  background: var(--paper-deep);
+  cursor: pointer;
+  max-width: 100%;
+}
+button.yt img { display: block; }
+button.yt .yt-play {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 0.4rem 0.8rem;
+  background: var(--paper);
+  color: var(--carrot);
+  text-align: left;
+  border-top: 1px solid var(--rule);
+}
+.post iframe { display: block; margin: 2rem 0; max-width: 100%; border: 0; }

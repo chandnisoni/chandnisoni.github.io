@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import Colophon from '../../components/Colophon.astro';
 import Media from '../../components/Media.astro';
+import { getPublishedPosts } from '../../lib/writing';
 
 export async function getStaticPaths() {
   const entries = await getCollection('work');
@@ -14,7 +15,7 @@ const { data } = entry;
 const { Content } = await render(entry);
 const LETTER: Record<string, string> = { 'edgar-miner': 'A', 'fundraising-agent': 'B', 'thinkmocha': 'C' };
 const letter = LETTER[entry.id] ?? '';
-const showWriting = false;
+const showWriting = (await getPublishedPosts()).length > 0;
 ---
 <Base title={data.title} description={data.summary}>
   <Nav slot="nav" showWriting={showWriting} />

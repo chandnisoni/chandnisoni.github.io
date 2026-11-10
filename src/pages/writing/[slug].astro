@@ -1,0 +1,27 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Colophon from '../../components/Colophon.astro';
+import YouTube from '../../components/YouTube.astro';
+import { getPublishedPosts, formatDate } from '../../lib/writing';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return posts.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+---
+<Base title={data.title} description={data.summary}>
+  <Nav slot="nav" showWriting={true} />
+  <article class="post">
+    <h1>{data.title}</h1>
+    <p class="meta">{formatDate(data.date)}</p>
+    {data.youtube && <YouTube id={data.youtube} title={data.title} />}
+    <Content />
+    <p><a class="back sans" href="/writing/">← All writing</a></p>
+  </article>
+  <Colophon slot="colophon" />
+</Base>

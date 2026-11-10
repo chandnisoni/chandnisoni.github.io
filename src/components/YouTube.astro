@@ -1,0 +1,21 @@
+---
+interface Props { id: string; title: string }
+const { id, title } = Astro.props;
+---
+<button class="yt" data-id={id} type="button" aria-label={`Play video: ${title}`}>
+  <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" width="480" height="360" loading="lazy" decoding="async" />
+  <span class="yt-play sans">Play</span>
+</button>
+<script>
+  for (const b of document.querySelectorAll<HTMLButtonElement>('button.yt')) {
+    b.addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.src = `https://www.youtube-nocookie.com/embed/${b.dataset.id}?autoplay=1`;
+      f.title = b.getAttribute('aria-label') ?? 'Video';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture';
+      f.allowFullscreen = true;
+      f.width = '480'; f.height = '360';
+      b.replaceWith(f);
+    });
+  }
+</script>

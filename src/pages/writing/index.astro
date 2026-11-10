@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Colophon from '../../components/Colophon.astro';
+import { getPublishedPosts, formatDate } from '../../lib/writing';
+const posts = await getPublishedPosts();
+---
+<Base title="Writing" description="Later chapters: posts by Chandni Soni.">
+  <Nav slot="nav" showWriting={posts.length > 0} />
+  <h1>Writing</h1>
+  {posts.length === 0 ? (
+    <p>Nothing here yet. The <a href="/rss.xml">feed</a> will carry the first post when there is one.</p>
+  ) : (
+    <ol class="post-list">
+      {posts.map((p) => (
+        <li>
+          <a href={`/writing/${p.id}/`}>{p.data.title}</a>
+          <span class="meta">{formatDate(p.data.date)}</span>
+          <p>{p.data.summary}</p>
+        </li>
+      ))}
+    </ol>
+  )}
+  <Colophon slot="colophon" />
+</Base>

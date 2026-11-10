@@ -8,9 +8,10 @@ import Chapter from '../components/Chapter.astro';
 import AlsoBuilt from '../components/AlsoBuilt.astro';
 import Colophon from '../components/Colophon.astro';
 import { site } from '../data/site';
+import { getPublishedPosts } from '../lib/writing';
 
 const chapters = (await getCollection('chapters')).sort((a, b) => a.data.order - b.data.order);
-const showWriting = false;
+const showWriting = (await getPublishedPosts()).length > 0;
 ---
 <Base title={site.name} description={site.tagline}>
   <Nav slot="nav" showWriting={showWriting} />
