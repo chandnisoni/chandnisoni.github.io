@@ -1,0 +1,10 @@
+---
+interface Props { showWriting: boolean }
+const { showWriting } = Astro.props;
+---
+<nav class="site sans" aria-label="Site">
+  <a href="/#contents">Contents</a>
+  <a href="/work/edgar-miner/">Work</a>
+  {showWriting && <a href="/writing/">Writing</a>}
+  <a href="/#v">Say hello</a>
+</nav>

@@ -1,0 +1,11 @@
+---
+import { site } from '../data/site';
+---
+<section class="also-built">
+  <h2>Also built</h2>
+  <ul>
+    {site.alsoBuilt.map((b) => (
+      <li><strong>{b.name}</strong>, {b.year} ({b.status}). {b.line}</li>
+    ))}
+  </ul>
+</section>

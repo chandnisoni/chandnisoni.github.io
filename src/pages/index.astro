@@ -1,6 +1,33 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Masthead from '../components/Masthead.astro';
+import Contents from '../components/Contents.astro';
+import Chapter from '../components/Chapter.astro';
+import AlsoBuilt from '../components/AlsoBuilt.astro';
+import Colophon from '../components/Colophon.astro';
+import { site } from '../data/site';
+
+const chapters = (await getCollection('chapters')).sort((a, b) => a.data.order - b.data.order);
+const showWriting = false;
 ---
-<Base title="Chandni Soni" description="Engineer and founder. I build things that turn messy documents into stories people can act on.">
-  <h1>Chandni Soni</h1>
+<Base title={site.name} description={site.tagline}>
+  <Nav slot="nav" showWriting={showWriting} />
+  <Masthead />
+  <Contents chapters={chapters} />
+  {chapters.map((entry) => (
+    <Chapter entry={entry}>
+      {entry.data.numeral === 'v' && (
+        <p class="contact">
+          Write to <a href={`mailto:${site.email}`}>{site.email}</a>.{' '}
+          I am also on <a href={site.links.linkedin}>LinkedIn</a> and <a href={site.links.github}>GitHub</a>.{' '}
+          {site.links.calendar && <>Or <a href={site.links.calendar}>book a time</a>.{' '}</>}
+          The formal version is the <a href={site.links.resume}>resume (PDF)</a>.
+        </p>
+      )}
+    </Chapter>
+  ))}
+  <AlsoBuilt />
+  <Colophon slot="colophon" />
 </Base>

@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { chapters: CollectionEntry<'chapters'>[] }
+const { chapters } = Astro.props;
+---
+<nav class="contents" id="contents" aria-label="Contents">
+  <ol>
+    {chapters.map(({ data }) => (
+      <li>
+        <a href={`#${data.numeral}`}><span class="numeral">{data.numeral}.</span> {data.title}</a>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="subtitle">{data.subtitle}</span>
+      </li>
+    ))}
+  </ol>
+</nav>

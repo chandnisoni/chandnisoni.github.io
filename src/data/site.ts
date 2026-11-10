@@ -14,7 +14,7 @@ export const site = {
       name: 'MeetAndGreet',
       year: 2023,
       status: 'shelved',
-      line: 'An events platform for meeting people around shared plans. Built in 2023, never launched.',
+      line: 'An events platform for meeting people around shared plans. Never launched.',
     },
   ],
 };

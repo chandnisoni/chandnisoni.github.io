@@ -1,0 +1,9 @@
+---
+import { site } from '../data/site';
+import Figure from './Figure.astro';
+---
+<header class="masthead">
+  <h1>{site.name}</h1>
+  <p class="tagline">{site.tagline}</p>
+  {site.headshot && <Figure {...site.headshot} />}
+</header>
