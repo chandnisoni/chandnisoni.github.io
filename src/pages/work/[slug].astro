@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Colophon from '../../components/Colophon.astro';
+import Media from '../../components/Media.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('work');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+const LETTER: Record<string, string> = { 'edgar-miner': 'A', 'fundraising-agent': 'B', 'thinkmocha': 'C' };
+const letter = LETTER[entry.id] ?? '';
+const showWriting = false;
+---
+<Base title={data.title} description={data.summary}>
+  <Nav slot="nav" showWriting={showWriting} />
+  <article class="appendix">
+    <p class="appendix-label sans"><a href="/">Chandni Soni</a> · Appendix {letter}</p>
+    <h1>{data.title} <span class="status">({data.status})</span></h1>
+    <p class="summary">{data.summary}</p>
+    <Content />
+    <Media items={data.media} />
+    <p class="stack sans">Stack: {data.stack.join(', ')}.</p>
+    <p><a class="back sans" href="/#iv">← Back to the book</a></p>
+  </article>
+  <Colophon slot="colophon" />
+</Base>

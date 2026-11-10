@@ -110,3 +110,21 @@ aside.note {
   .contents .subtitle { flex-basis: 100%; padding-left: 1.6em; }
   .masthead { margin-top: 2.5rem; }
 }
+
+/* Appendices */
+.appendix { margin-top: 2.5rem; }
+.appendix-label { font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 1.5rem; }
+.appendix-label a { color: inherit; text-decoration: none; }
+.appendix-label a:hover { color: var(--carrot); }
+.appendix h1 { margin-bottom: 0.5rem; }
+.appendix .status { color: var(--ink-soft); font-size: 0.6em; white-space: nowrap; }
+.appendix .summary { font-size: 1.15em; margin-bottom: 2rem; }
+.appendix h2 { margin-top: 2.5rem; }
+.appendix .stack {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--rule);
+  padding-top: 0.75rem;
+  margin-top: 2.5rem;
+}
+.appendix .back { font-size: 0.9rem; }

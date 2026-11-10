@@ -1,0 +1,18 @@
+---
+import Figure from './Figure.astro';
+import { assertImageExists } from '../lib/images';
+type Item = { src: string; alt: string; caption: string; kind: 'image' | 'video'; width: number; height: number };
+interface Props { items: Item[] }
+const { items } = Astro.props;
+for (const m of items) if (m.kind === 'video') assertImageExists(m.src);
+---
+{items.map((m) =>
+  m.kind === 'image' ? (
+    <Figure src={m.src} alt={m.alt} caption={m.caption} width={m.width} height={m.height} wide />
+  ) : (
+    <figure class="figure wide">
+      <video src={m.src} width={m.width} height={m.height} muted loop playsinline controls preload="metadata" aria-label={m.alt}></video>
+      <figcaption>{m.caption}</figcaption>
+    </figure>
+  )
+)}
