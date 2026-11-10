@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readdirSync } from 'node:fs';
-import { dist, html, text } from './helpers.mjs';
+import { dist, html, text, allPages } from './helpers.mjs';
 
 const doc = () => html('index.html');
 const allCss = () => readdirSync(dist('_astro')).filter(f => f.endsWith('.css')).map(f => text(`_astro/${f}`)).join('');
@@ -10,12 +10,16 @@ test('five chapter headings with numerals inside the heading, in order', () => {
   const h2 = doc().querySelectorAll('section.chapter h2').map(h => h.text.replace(/\s+/g, ' ').trim());
   assert.deepEqual(h2, ['i. A plate of vegetables', 'ii. Ten thousand restaurants', 'iii. Fifty books', 'iv. Reading between the lines', 'v. The next chapter']);
 });
-test('no eyebrow labels, cards, or icon rows', () => {
-  const d = doc();
-  assert.equal(d.querySelectorAll('[class*="eyebrow"],[class*="card"],[class*="badge"],[class*="icon-row"]').length, 0);
-  for (const h of d.querySelectorAll('h1,h2,h3')) {
-    const prev = h.previousElementSibling;
-    assert.ok(!prev || !/^(p|span|small|div)$/.test(prev.tagName.toLowerCase()) || prev.text.trim().length > 60, `label above ${h.text}`);
+test('no eyebrow labels, cards, or icon rows on any page', () => {
+  for (const p of allPages()) {
+    const d = html(p);
+    assert.equal(d.querySelectorAll('[class*="eyebrow"],[class*="card"],[class*="badge"],[class*="icon-row"]').length, 0, p);
+    for (const h of d.querySelectorAll('h1,h2,h3')) {
+      const prev = h.previousElementSibling;
+      // A page's one-line summary (spec §5 item 1) sits under the h1 and may precede the first h2; it is a subtitle, not a label.
+      if (prev && prev.classList.contains('summary')) continue;
+      assert.ok(!prev || !/^(p|span|small|div)$/.test(prev.tagName.toLowerCase()) || prev.text.trim().length > 60, `${p}: label above ${h.text}`);
+    }
   }
 });
 test('table of contents links to all five chapters', () => {

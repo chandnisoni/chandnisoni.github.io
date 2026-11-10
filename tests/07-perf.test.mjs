@@ -29,3 +29,9 @@ test('reduced motion disables all transitions and animations', () => {
 test('fonts use font-display swap', () => {
   assert.match(allCss(), /font-display:\s*swap/);
 });
+
+test('anchor targets clear the fixed running header', () => {
+  const css = allCss();
+  assert.match(css, /\.chapter[^{]*\{[^}]*scroll-margin-top/s);
+  assert.match(css, /#contents[^{]*\{[^}]*scroll-margin-top|\.contents[^{]*\{[^}]*scroll-margin-top/s);
+});

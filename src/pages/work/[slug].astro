@@ -20,8 +20,7 @@ const showWriting = (await getPublishedPosts()).length > 0;
 <Base title={data.title} description={data.summary}>
   <Nav slot="nav" showWriting={showWriting} />
   <article class="appendix">
-    <p class="appendix-label sans"><a href="/">Chandni Soni</a> · Appendix {letter}</p>
-    <h1>{data.title} <span class="status">({data.status})</span></h1>
+    <h1><span class="numeral">Appendix {letter}.</span> {data.title} <span class="status">({data.status})</span></h1>
     <p class="summary">{data.summary}</p>
     <Content />
     <Media items={data.media} />

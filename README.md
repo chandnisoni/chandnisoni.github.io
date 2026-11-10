@@ -35,7 +35,9 @@ Export the PDF from `ChandniSoni-resume-2026-founder.docx` and save it to both `
 
 ## Launching
 
-Every push to `master` runs `.github/workflows/deploy.yml`: it installs, runs `npm test` (build plus the HTML checks), and deploys `dist/` to GitHub Pages. The workflow switches the Pages source to "GitHub Actions" on its first run; if that step is refused, set it once by hand in Settings → Pages → Source. Cloudflare in front of the domain needs no change. The `CNAME` file lives in `public/` so the custom domain survives every deploy.
+1. **Before the first merge**, in the repo's Settings → Pages, set Source to "GitHub Actions". A site that already deploys from a branch is not switched by the workflow; while the source is still "branch", a push to `master` publishes the raw repo root, which is no longer a site.
+2. Merge `redesign` into `master` and push. `.github/workflows/deploy.yml` installs, runs `npm test` (build plus the HTML checks), and deploys `dist/`.
+3. Cloudflare in front of the domain needs no change. The custom domain is kept in the Pages settings; `public/CNAME` is a backstop.
 
 Before adding images: drop the files into `public/images/` and set `image` (chapters) or `media` (work entries) in the markdown frontmatter with `width` and `height`. A figure whose file is missing fails the build on purpose.
 

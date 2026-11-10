@@ -31,3 +31,11 @@ test('a work entry pointing at a missing image fails the build', () => {
   assert.notEqual(r.status, 0);
   assert.match(r.stderr + r.stdout, /Missing image: \/images\/does-not-exist\.webp/);
 });
+
+test('appendix letter sits inside the h1, book-style', () => {
+  const want = { 'edgar-miner': 'Appendix A.', 'fundraising-agent': 'Appendix B.', 'thinkmocha': 'Appendix C.' };
+  for (const p of pages) {
+    const h1 = html(p).querySelector('h1').text.replace(/\s+/g, ' ').trim();
+    assert.ok(h1.startsWith(want[p.split('/')[1]]), h1);
+  }
+});

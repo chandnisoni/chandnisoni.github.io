@@ -26,7 +26,7 @@ nav.site a:hover { color: var(--carrot-ink); text-decoration: underline; }
 .masthead .figure { max-width: 220px; margin: 2rem 0 0 auto; }
 
 /* Table of contents with dotted leaders */
-.contents { margin: 0 0 4rem; }
+.contents { margin: 0 0 4rem; scroll-margin-top: 3rem; }
 .contents ol { list-style: none; padding: 0; margin: 0; }
 .contents li {
   display: flex;
@@ -49,10 +49,10 @@ nav.site a:hover { color: var(--carrot-ink); text-decoration: underline; }
   white-space: nowrap;
 }
 .numeral { color: var(--carrot-ink); }
-h2 .numeral { color: var(--carrot); }
+h1 .numeral, h2 .numeral { color: var(--carrot); }
 
 /* Chapters */
-.chapter { margin-block: 3rem 4rem; }
+.chapter { margin-block: 3rem 4rem; scroll-margin-top: 3rem; }
 .chapter h2 { margin-bottom: 1rem; }
 .chapter > p:first-of-type::first-letter {
   float: left;
@@ -114,9 +114,6 @@ aside.note {
 
 /* Appendices */
 .appendix { margin-top: 2.5rem; }
-.appendix-label { font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 1.5rem; }
-.appendix-label a { color: inherit; text-decoration: none; }
-.appendix-label a:hover { color: var(--carrot-ink); }
 .appendix h1 { margin-bottom: 0.5rem; }
 .appendix .status { color: var(--ink-soft); font-size: 0.6em; white-space: nowrap; }
 .appendix .summary { font-size: 1.15em; margin-bottom: 2rem; }
