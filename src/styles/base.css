@@ -23,7 +23,7 @@ main {
 }
 
 a {
-  color: var(--carrot);
+  color: var(--carrot-ink);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.14em;
@@ -39,7 +39,7 @@ h1, h2, h3 {
   margin: 0 0 0.6em;
 }
 h1 { font-size: clamp(2rem, 4.5vw, 2.8rem); }
-h2 { font-size: clamp(1.45rem, 2.6vw, 1.8rem); }
+h2 { font-size: clamp(1.5rem, 2.6vw, 1.8rem); }
 h3 { font-size: 1.15rem; }
 
 p { margin: 0 0 1em; }

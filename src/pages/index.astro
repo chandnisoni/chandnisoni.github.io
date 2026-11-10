@@ -7,6 +7,7 @@ import Contents from '../components/Contents.astro';
 import Chapter from '../components/Chapter.astro';
 import AlsoBuilt from '../components/AlsoBuilt.astro';
 import Colophon from '../components/Colophon.astro';
+import RunningHeader from '../components/RunningHeader.astro';
 import { site } from '../data/site';
 import { getPublishedPosts } from '../lib/writing';
 
@@ -14,6 +15,7 @@ const chapters = (await getCollection('chapters')).sort((a, b) => a.data.order -
 const showWriting = (await getPublishedPosts()).length > 0;
 ---
 <Base title={site.name} description={site.tagline}>
+  <RunningHeader slot="running" />
   <Nav slot="nav" showWriting={showWriting} />
   <Masthead />
   <Contents chapters={chapters} />

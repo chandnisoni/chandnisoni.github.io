@@ -5,6 +5,8 @@
   --ink-soft: #5B544A;
   --rule: #D8CEBC;
   --carrot: #D9622B;
+  /* The same hue, darkened to 5.4:1 on paper for text-size links. Carrot itself is for large type: numerals in headings, drop caps. */
+  --carrot-ink: #A8441A;
 
   --font-serif: 'Literata Variable', Georgia, 'Times New Roman', serif;
   --font-sans: 'Source Sans 3', system-ui, -apple-system, sans-serif;

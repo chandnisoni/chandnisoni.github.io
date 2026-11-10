@@ -8,7 +8,7 @@ nav.site {
   font-size: 0.9rem;
 }
 nav.site a { color: var(--ink-soft); text-decoration: none; }
-nav.site a:hover { color: var(--carrot); text-decoration: underline; }
+nav.site a:hover { color: var(--carrot-ink); text-decoration: underline; }
 
 /* Masthead: left-aligned, typographic */
 .masthead { margin: 4rem 0 3rem; }
@@ -35,7 +35,7 @@ nav.site a:hover { color: var(--carrot); text-decoration: underline; }
   padding: 0.35rem 0;
 }
 .contents a { text-decoration: none; color: var(--ink); white-space: nowrap; }
-.contents a:hover { color: var(--carrot); }
+.contents a:hover { color: var(--carrot-ink); }
 .contents .leader {
   flex: 1;
   border-bottom: 1px dotted var(--rule);
@@ -48,7 +48,8 @@ nav.site a:hover { color: var(--carrot); text-decoration: underline; }
   color: var(--ink-soft);
   white-space: nowrap;
 }
-.numeral { color: var(--carrot); }
+.numeral { color: var(--carrot-ink); }
+h2 .numeral { color: var(--carrot); }
 
 /* Chapters */
 .chapter { margin-block: 3rem 4rem; }
@@ -115,7 +116,7 @@ aside.note {
 .appendix { margin-top: 2.5rem; }
 .appendix-label { font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 1.5rem; }
 .appendix-label a { color: inherit; text-decoration: none; }
-.appendix-label a:hover { color: var(--carrot); }
+.appendix-label a:hover { color: var(--carrot-ink); }
 .appendix h1 { margin-bottom: 0.5rem; }
 .appendix .status { color: var(--ink-soft); font-size: 0.6em; white-space: nowrap; }
 .appendix .summary { font-size: 1.15em; margin-bottom: 2rem; }
@@ -151,8 +152,36 @@ button.yt .yt-play {
   inset: auto 0 0 0;
   padding: 0.4rem 0.8rem;
   background: var(--paper);
-  color: var(--carrot);
+  color: var(--carrot-ink);
   text-align: left;
   border-top: 1px solid var(--rule);
 }
 .post iframe { display: block; margin: 2rem 0; max-width: 100%; border: 0; }
+
+/* Running header: the current chapter, once past the masthead */
+header.running {
+  position: fixed;
+  inset: 0 0 auto 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  padding: 0.35rem var(--gutter);
+  text-align: center;
+  transform: translateY(-100%);
+  transition: transform 0.25s ease;
+  z-index: 1;
+}
+header.running.visible { transform: translateY(0); }
+
+/* Motion: the only animation on the site is a fade-in on chapter figures. */
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+.chapter .figure img { animation: fade-in 0.4s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .chapter .figure img { opacity: 1; }
+}

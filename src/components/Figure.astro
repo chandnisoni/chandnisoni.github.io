@@ -5,6 +5,6 @@ const { src, alt, caption, width, height, wide = false } = Astro.props;
 assertImageExists(src);
 ---
 <figure class:list={['figure', { wide }]}>
-  <img src={src} alt={alt} width={width} height={height} />
+  <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" />
   <figcaption>{caption}</figcaption>
 </figure>
