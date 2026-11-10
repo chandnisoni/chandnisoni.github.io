@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [master, redesign] # redesign: temporary CI dry run, removed before merge
   workflow_dispatch:
 
 permissions:
