@@ -1,0 +1,42 @@
+---
+import '@fontsource-variable/literata';
+import '@fontsource/source-sans-3/400.css';
+import '@fontsource/source-sans-3/600.css';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/book.css';
+
+interface Props {
+  title: string;
+  description: string;
+  currentChapterTitles?: string[];
+}
+const { title, description } = Astro.props;
+const isHome = Astro.url.pathname === '/';
+const fullTitle = isHome ? 'Chandni Soni' : `${title} · Chandni Soni`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <slot name="head" />
+  </head>
+  <body>
+    <slot name="running" />
+    <slot name="nav" />
+    <main>
+      <slot />
+    </main>
+    <slot name="colophon" />
+  </body>
+</html>

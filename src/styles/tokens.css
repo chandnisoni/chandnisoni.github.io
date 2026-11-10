@@ -1,0 +1,16 @@
+:root {
+  --paper: #F7F2E8;
+  --paper-deep: #EDE5D6;
+  --ink: #1E1A15;
+  --ink-soft: #5B544A;
+  --rule: #D8CEBC;
+  --carrot: #D9622B;
+
+  --font-serif: 'Literata Variable', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+
+  --measure: 680px;
+  --measure-wide: 900px;
+  --gutter: 20px;
+  --leading: 1.55;
+}
