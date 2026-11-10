@@ -8,11 +8,19 @@
   /* The same hue, darkened to 5.4:1 on paper for text-size links. Carrot itself is for large type: numerals in headings, drop caps. */
   --carrot-ink: #A8441A;
 
-  --font-serif: 'Literata Variable', Georgia, 'Times New Roman', serif;
+  --font-serif: 'Literata Variable', 'Literata Fallback', Georgia, serif;
   --font-sans: 'Source Sans 3', system-ui, -apple-system, sans-serif;
 
   --measure: 680px;
   --measure-wide: 900px;
   --gutter: 20px;
   --leading: 1.55;
+}
+
+/* Georgia, widened to Literata's measure so text does not reflow when the webfont swaps in.
+   Measured in-browser: Literata sets the same line 7% wider than Georgia. */
+@font-face {
+  font-family: 'Literata Fallback';
+  src: local('Georgia');
+  size-adjust: 107%;
 }

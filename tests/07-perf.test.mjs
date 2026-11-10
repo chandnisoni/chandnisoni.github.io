@@ -35,3 +35,8 @@ test('anchor targets clear the fixed running header', () => {
   assert.match(css, /\.chapter[^{]*\{[^}]*scroll-margin-top/s);
   assert.match(css, /#contents[^{]*\{[^}]*scroll-margin-top|\.contents[^{]*\{[^}]*scroll-margin-top/s);
 });
+test('serif fallback is metric-adjusted and the Latin face is preloaded', () => {
+  assert.match(allCss(), /font-family:\s*["']?Literata Fallback["']?[^}]*size-adjust/s);
+  const link = html('index.html').querySelector('link[rel="preload"][as="font"]');
+  assert.ok(link && /literata-latin-wght-normal.*\.woff2$/.test(link.getAttribute('href')), 'preload link');
+});
