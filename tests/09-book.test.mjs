@@ -29,3 +29,13 @@ test('the flip is a 3D turn around the spine, and pages still stack without JS',
   assert.doesNotMatch(css, /\.book:not\(\.js\)[^}]*display:\s*none/);
   assert.match(css, /\.book\.js[^{]*\{[^}]*display:\s*none/s);
 });
+test('the cover is the largest paint: fetchpriority high, preloaded, and every page has a responsive srcset', () => {
+  const d = html(page);
+  const cover = d.querySelector('[data-book] .page[data-page="0"] img');
+  assert.equal(cover.getAttribute('fetchpriority'), 'high');
+  assert.ok(d.querySelector(`link[rel="preload"][as="image"][href="${cover.getAttribute('src')}"]`), 'cover preload');
+  for (const img of d.querySelectorAll('[data-book] img')) {
+    assert.match(img.getAttribute('srcset') ?? '', /-800\.webp 800w, .*\.webp 1600w/);
+    assert.ok(img.getAttribute('sizes'));
+  }
+});

@@ -1,17 +1,19 @@
 ---
 // A book viewer: one page at a time, flipping around the spine. Without JS, every page is laid out in order.
 import { assertImageExists } from '../lib/images';
+const small = (src: string) => src.replace(/\.webp$/, '-800.webp');
+const SIZES = '(max-width: 960px) calc(100vw - 40px), 900px';
 type Page = { src: string; alt: string; caption: string; width: number; height: number };
 interface Props { pages: Page[]; title: string }
 const { pages, title } = Astro.props;
-for (const p of pages) assertImageExists(p.src);
+for (const p of pages) { assertImageExists(p.src); assertImageExists(small(p.src)); }
 const { width, height } = pages[0];
 ---
 <div class="book" data-book aria-label={title} style={`--page-ratio: ${width} / ${height}`}>
   <div class="pages">
     {pages.map((p, i) => (
       <figure class="page" data-page={i}>
-        <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+        <img src={p.src} srcset={`${small(p.src)} 800w, ${p.src} 1600w`} sizes={SIZES} alt={p.alt} width={p.width} height={p.height} loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" />
         {p.caption && <figcaption>{p.caption}</figcaption>}
       </figure>
     ))}
