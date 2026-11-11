@@ -22,7 +22,7 @@ Slots that are empty until the asset exists, all in `src/data/site.ts`:
 - `links.edgarMiner`: the public URL; until set, "Ask for access" is a mailto.
 - `links.ideas`: the ideas list page; until set, the 87-ideas line has no link.
 
-Work pages live in `src/content/work/*.md` (Edgar Miner, Fundraising Agent, ThinkMocha storybooks).
+Work pages live in `src/content/work/*.md` (Edgar Miner, Fundraising Agent, Talewriter).
 
 ## Adding a post
 

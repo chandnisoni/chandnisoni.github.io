@@ -22,7 +22,6 @@ const showWriting = (await getPublishedPosts()).length > 0;
     <p class="summary">{data.summary}</p>
     <Content />
     <Media items={data.media} />
-    <p class="stack sans">Stack: {data.stack.join(', ')}.</p>
     <p><a class="back sans" href="/">← Back</a></p>
   </article>
   <Colophon slot="colophon" />

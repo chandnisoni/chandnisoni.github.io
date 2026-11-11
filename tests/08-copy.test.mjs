@@ -36,7 +36,7 @@ test('metrics on the site all appear in the LinkedIn consistency table', () => {
   }
 });
 test('appendix pages carry the numerals the cross-check needs', () => {
-  const t = bodyText('work/thinkmocha/index.html') + bodyText('work/fundraising-agent/index.html');
+  const t = bodyText('work/talewriter/index.html') + bodyText('work/fundraising-agent/index.html');
   for (const m of ['50+', '90%+', '20 hours', '2 hours']) assert.ok(t.includes(m), m);
 });
 

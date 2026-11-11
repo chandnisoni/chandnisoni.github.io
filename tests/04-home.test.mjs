@@ -26,7 +26,7 @@ test('top nav is exactly Resume, LinkedIn, GitHub, Email', () => {
 });
 test('every claim that has a page links to it', () => {
   const hrefs = doc().querySelectorAll('main a').map(a => a.getAttribute('href'));
-  for (const h of ['/work/edgar-miner/', '/work/thinkmocha/', '/work/fundraising-agent/']) assert.ok(hrefs.includes(h), h);
+  for (const h of ['/work/edgar-miner/', '/work/talewriter/', '/work/fundraising-agent/']) assert.ok(hrefs.includes(h), h);
   const access = doc().querySelectorAll('main a').find(a => /ask for access/i.test(a.text));
   assert.ok(access && access.getAttribute('href').startsWith('mailto:chandni@thinkmocha.com'), 'Ask for access is a mailto until Edgar Miner has a URL');
 });

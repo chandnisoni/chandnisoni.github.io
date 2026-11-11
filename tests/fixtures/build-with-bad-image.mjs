@@ -9,7 +9,6 @@ title: Bad fixture
 summary: A fixture with a missing image.
 status: paused
 order: 99
-stack: []
 media:
   - { src: /images/does-not-exist.webp, alt: x, caption: x, kind: image, width: 10, height: 10 }
 ---

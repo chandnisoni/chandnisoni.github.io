@@ -14,7 +14,6 @@ const work = defineCollection({
   schema: z.object({
     title: z.string(),
     summary: z.string(),
-    stack: z.array(z.string()),
     order: z.number(),
     media: z
       .array(image.extend({ kind: z.enum(['image', 'video']) }))

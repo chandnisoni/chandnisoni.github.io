@@ -66,13 +66,6 @@ aside.note {
 .work h1 { margin-bottom: 0.5rem; }
 .work .summary { font-size: 1.15em; margin-bottom: 2rem; }
 .work h2 { margin-top: 2.5rem; }
-.work .stack {
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-  border-top: 1px solid var(--rule);
-  padding-top: 0.75rem;
-  margin-top: 2.5rem;
-}
 .work .back { font-size: 0.9rem; }
 
 /* Writing */
