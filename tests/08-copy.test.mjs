@@ -17,8 +17,8 @@ test('no competitor name, no "paused for the MBA"', () => {
 });
 test('daughter is anonymous', () => {
   const t = bodyText('index.html');
-  assert.match(t, /my daughter/i);
-  assert.doesNotMatch(t, /my daughter,?\s+[A-Z][a-z]+/, 'a name follows "my daughter"');
+  assert.match(t, /my (daughter|then three-year-old)/i);
+  assert.doesNotMatch(t, /my (daughter|then three-year-old),?\s+[A-Z][a-z]+/, 'a name follows the daughter mention');
 });
 // The consistency table from linkedin-updates.md, vendored so this guard runs in CI too.
 const VENDORED = 'tests/fixtures/consistency-table.md';

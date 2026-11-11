@@ -34,7 +34,7 @@ test('the beats land in order', () => {
   const t = mainText();
   const beats = [
     'Right now I\'m building Edgar Miner',
-    'She cleared her plate.',
+    'she ate all the veggies.',
     '50+ books',
     'Before that I spent six years as a backend engineer.',
     'Did a bunch of other stuff too.',
