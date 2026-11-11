@@ -8,9 +8,10 @@ const allCss = () => readdirSync(dist('_astro')).filter(f => f.endsWith('.css'))
 test('home and work pages ship zero scripts', () => {
   for (const p of ['index.html', 'work/edgar-miner/index.html']) assert.equal(html(p).querySelectorAll('script').length, 0, p);
 });
-test('images are lazy, async, and sized', () => {
+test('images are lazy, async, and sized (a book cover may load eagerly: it is the largest paint)', () => {
   for (const p of allPages()) for (const img of html(p).querySelectorAll('img')) {
-    assert.equal(img.getAttribute('loading'), 'lazy', p);
+    const cover = img.closest('[data-book] .page[data-page="0"]');
+    assert.equal(img.getAttribute('loading'), cover ? 'eager' : 'lazy', p);
     assert.equal(img.getAttribute('decoding'), 'async', p);
     assert.ok(img.getAttribute('width') && img.getAttribute('height'), p);
   }

@@ -71,6 +71,27 @@ aside.note {
 .work h2 { margin-top: 2.5rem; }
 .work .back { font-size: 0.9rem; }
 
+/* Book viewer */
+.book { margin: 2rem 0; perspective: 2400px; }
+.book .pages { position: relative; }
+.book .page { margin: 0 0 0.75rem; }
+.book .page img { border: 1px solid var(--rule); background: #fff; }
+.book figcaption { margin-top: 0.5rem; }
+.book .controls { display: none; align-items: baseline; justify-content: space-between; gap: 1rem; font-size: 0.9rem; color: var(--ink-soft); margin: 0.75rem 0 0; }
+.book button { font: inherit; color: var(--carrot-ink); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 0.14em; }
+.book button:disabled { color: var(--rule); text-decoration: none; cursor: default; }
+/* With JS: stack every page in one cell, show the current one on top and the next one beneath it. */
+.book.js .controls { display: flex; }
+.book.js .pages { display: grid; aspect-ratio: var(--page-ratio); cursor: pointer; }
+.book.js .page { grid-area: 1 / 1; margin: 0; display: none; transform-origin: left center; backface-visibility: hidden; }
+.book.js .page.current { display: block; z-index: 2; }
+.book.js .page.under { display: block; z-index: 1; }
+.book.js figcaption { display: none; }
+.book.js .page.current.flip-out { animation: flip-out 0.7s ease-in-out both; z-index: 3; }
+.book.js .page.current.flip-in { animation: flip-in 0.7s ease-in-out both; z-index: 3; }
+@keyframes flip-out { from { transform: rotateY(0deg); } to { transform: rotateY(-180deg); } }
+@keyframes flip-in { from { transform: rotateY(-180deg); } to { transform: rotateY(0deg); } }
+
 /* Writing */
 .post-list { list-style: none; padding: 0; }
 .post-list li { margin-bottom: 1.5rem; }

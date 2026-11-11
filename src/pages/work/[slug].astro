@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import Colophon from '../../components/Colophon.astro';
 import Media from '../../components/Media.astro';
+import Book from '../../components/Book.astro';
 import { getPublishedPosts } from '../../lib/writing';
 
 export async function getStaticPaths() {
@@ -21,7 +22,7 @@ const showWriting = (await getPublishedPosts()).length > 0;
     <h1>{data.title}</h1>
     <p class="summary">{data.summary}</p>
     <Content />
-    <Media items={data.media} />
+    {data.book ? <Book pages={data.book} title={`${data.title} book`} /> : <Media items={data.media} />}
     <p><a class="back sans" href="/">← Back</a></p>
   </article>
   <Colophon slot="colophon" />

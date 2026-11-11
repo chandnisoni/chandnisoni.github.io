@@ -18,6 +18,8 @@ const work = defineCollection({
     media: z
       .array(image.extend({ kind: z.enum(['image', 'video']) }))
       .default([]),
+    // A page-flip book instead of stacked media; the first page is the cover.
+    book: z.array(image).optional(),
   }),
 });
 

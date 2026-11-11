@@ -1,0 +1,74 @@
+---
+// A book viewer: one page at a time, flipping around the spine. Without JS, every page is laid out in order.
+import { assertImageExists } from '../lib/images';
+type Page = { src: string; alt: string; caption: string; width: number; height: number };
+interface Props { pages: Page[]; title: string }
+const { pages, title } = Astro.props;
+for (const p of pages) assertImageExists(p.src);
+const { width, height } = pages[0];
+---
+<div class="book" data-book aria-label={title} style={`--page-ratio: ${width} / ${height}`}>
+  <div class="pages">
+    {pages.map((p, i) => (
+      <figure class="page" data-page={i}>
+        <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+        {p.caption && <figcaption>{p.caption}</figcaption>}
+      </figure>
+    ))}
+  </div>
+  <p class="controls sans">
+    <button type="button" data-prev aria-label="Previous page">← Previous</button>
+    <span data-count aria-live="polite"></span>
+    <button type="button" data-next aria-label="Next page">Next →</button>
+  </p>
+</div>
+
+<script>
+  for (const book of document.querySelectorAll<HTMLElement>('[data-book]')) {
+    const pages = [...book.querySelectorAll<HTMLElement>('.page')];
+    const prev = book.querySelector<HTMLButtonElement>('[data-prev]')!;
+    const next = book.querySelector<HTMLButtonElement>('[data-next]')!;
+    const count = book.querySelector<HTMLElement>('[data-count]')!;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = 0;
+    let busy = false;
+
+    const show = () => {
+      pages.forEach((p, k) => {
+        p.classList.toggle('current', k === i);
+        p.classList.toggle('under', k === i + 1);
+      });
+      count.textContent = `${i + 1} / ${pages.length}`;
+      prev.disabled = i === 0;
+      next.disabled = i === pages.length - 1;
+      const ahead = pages[i + 2]?.querySelector('img');
+      if (ahead) ahead.loading = 'eager';
+    };
+
+    const turn = (dir: 1 | -1) => {
+      const to = i + dir;
+      if (busy || to < 0 || to >= pages.length) return;
+      if (reduced) { i = to; show(); return; }
+      busy = true;
+      const page = dir === 1 ? pages[i] : pages[to];
+      if (dir === -1) { page.classList.add('under'); page.classList.remove('under'); page.classList.add('current'); }
+      page.classList.add(dir === 1 ? 'flip-out' : 'flip-in');
+      const done = () => {
+        page.classList.remove('flip-out', 'flip-in');
+        i = to; show(); busy = false;
+      };
+      page.addEventListener('animationend', done, { once: true });
+      setTimeout(() => { if (busy) done(); }, 900);
+    };
+
+    book.classList.add('js');
+    show();
+    prev.addEventListener('click', () => turn(-1));
+    next.addEventListener('click', () => turn(1));
+    book.querySelector('.pages')!.addEventListener('click', () => turn(1));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') turn(1);
+      if (e.key === 'ArrowLeft') turn(-1);
+    });
+  }
+</script>
