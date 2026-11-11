@@ -62,6 +62,9 @@ aside.note {
 .colophon p { margin: 0 0 0.5rem; }
 
 /* Work pages */
+.work .figure + .figure { margin-top: 0.75rem; }
+.work .figure img { border: 1px solid var(--rule); }
+.work figcaption:empty { display: none; }
 .work { margin-top: 2.5rem; }
 .work h1 { margin-bottom: 0.5rem; }
 .work .summary { font-size: 1.15em; margin-bottom: 2rem; }
