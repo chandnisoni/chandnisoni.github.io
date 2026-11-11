@@ -1,7 +1,6 @@
 ---
 title: Edgar Miner
 summary: It reads every SEC filing so you don't have to.
-status: prototype, in progress
 order: 1
 stack: [Python 3.12, Django, Postgres, Celery, Dagster, Redis, HTMX, Alpine.js, Tailwind]
 media: []

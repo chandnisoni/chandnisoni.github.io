@@ -3,13 +3,11 @@ import { site } from '../data/site';
 const year = new Date().getFullYear();
 ---
 <footer class="colophon sans">
-  <p>Set in Literata. Built with Astro, hosted on GitHub Pages, written by me. I speak five languages, if you want to start a conversation in one of them.</p>
   <p class="links">
     <a href={`mailto:${site.email}`}>{site.email}</a>{' · '}
     <a href={site.links.linkedin}>LinkedIn</a>{' · '}
     <a href={site.links.github}>GitHub</a>{' · '}
     <a href={site.links.resume}>Resume (PDF)</a>
-    {site.links.calendar && <>{' · '}<a href={site.links.calendar}>Book a time</a></>}
   </p>
-  <p>© {year} Chandni Soni</p>
+  <p>© {year} Chandni Soni. Set in Literata, built with Astro.</p>
 </footer>

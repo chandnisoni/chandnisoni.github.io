@@ -3,3 +3,4 @@ dist/
 dist-*/
 .astro/
 .DS_Store
+.Rhistory

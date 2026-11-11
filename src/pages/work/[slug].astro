@@ -13,19 +13,17 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { data } = entry;
 const { Content } = await render(entry);
-const LETTER: Record<string, string> = { 'edgar-miner': 'A', 'fundraising-agent': 'B', 'thinkmocha': 'C' };
-const letter = LETTER[entry.id] ?? '';
 const showWriting = (await getPublishedPosts()).length > 0;
 ---
 <Base title={data.title} description={data.summary}>
   <Nav slot="nav" showWriting={showWriting} />
-  <article class="appendix">
-    <h1><span class="numeral">Appendix {letter}.</span> {data.title} <span class="status">({data.status})</span></h1>
+  <article class="work">
+    <h1>{data.title}</h1>
     <p class="summary">{data.summary}</p>
     <Content />
     <Media items={data.media} />
     <p class="stack sans">Stack: {data.stack.join(', ')}.</p>
-    <p><a class="back sans" href="/#iv">← Back to the book</a></p>
+    <p><a class="back sans" href="/">← Back</a></p>
   </article>
   <Colophon slot="colophon" />
 </Base>

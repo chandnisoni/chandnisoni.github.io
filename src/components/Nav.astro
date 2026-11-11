@@ -1,10 +1,12 @@
 ---
+import { site } from '../data/site';
 interface Props { showWriting: boolean }
 const { showWriting } = Astro.props;
 ---
 <nav class="site sans" aria-label="Site">
-  <a href="/#contents">Contents</a>
-  <a href="/work/edgar-miner/">Work</a>
+  <a href={site.links.resume}>Resume</a>
+  <a href={site.links.linkedin}>LinkedIn</a>
+  <a href={site.links.github}>GitHub</a>
+  <a href={`mailto:${site.email}`}>Email</a>
   {showWriting && <a href="/writing/">Writing</a>}
-  <a href="/#v">Say hello</a>
 </nav>

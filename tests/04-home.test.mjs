@@ -1,14 +1,62 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readdirSync } from 'node:fs';
-import { dist, html, text, allPages } from './helpers.mjs';
+import { html, allPages } from './helpers.mjs';
 
 const doc = () => html('index.html');
-const allCss = () => readdirSync(dist('_astro')).filter(f => f.endsWith('.css')).map(f => text(`_astro/${f}`)).join('');
+const mainText = () => doc().querySelector('main').text.replace(/\s+/g, ' ').trim();
 
-test('five chapter headings with numerals inside the heading, in order', () => {
-  const h2 = doc().querySelectorAll('section.chapter h2').map(h => h.text.replace(/\s+/g, ' ').trim());
-  assert.deepEqual(h2, ['i. A plate of vegetables', 'ii. Ten thousand restaurants', 'iii. Fifty books', 'iv. Reading between the lines', 'v. The next chapter']);
+test('home opens with the greeting and the one-line purpose', () => {
+  assert.equal(doc().querySelector('main h1').text.trim(), "Hi, I'm Chandni.");
+  assert.match(mainText(), /I'm an engineer who keeps starting companies\./);
+});
+test('home is one short column: under 500 words, no chapters, contents, also-built, or running header', () => {
+  const words = mainText().split(' ').length;
+  assert.ok(words < 500, `${words} words`);
+  const d = doc();
+  for (const sel of ['section.chapter', 'nav.contents', '.also-built', 'header.running', '.masthead']) assert.equal(d.querySelectorAll(sel).length, 0, sel);
+});
+test('top nav is exactly Resume, LinkedIn, GitHub, Email', () => {
+  const links = doc().querySelectorAll('nav.site a').map(a => [a.text.trim(), a.getAttribute('href')]);
+  assert.deepEqual(links, [
+    ['Resume', '/resume.pdf'],
+    ['LinkedIn', 'https://www.linkedin.com/in/sonichandni/'],
+    ['GitHub', 'https://github.com/chandnisoni'],
+    ['Email', 'mailto:chandni@thinkmocha.com'],
+  ]);
+});
+test('every claim that has a page links to it', () => {
+  const hrefs = doc().querySelectorAll('main a').map(a => a.getAttribute('href'));
+  for (const h of ['/work/edgar-miner/', '/work/thinkmocha/', '/work/fundraising-agent/']) assert.ok(hrefs.includes(h), h);
+  const access = doc().querySelectorAll('main a').find(a => /ask for access/i.test(a.text));
+  assert.ok(access && access.getAttribute('href').startsWith('mailto:chandni@thinkmocha.com'), 'Ask for access is a mailto until Edgar Miner has a URL');
+});
+test('the beats land in order', () => {
+  const t = mainText();
+  const beats = [
+    'Right now I\'m building Edgar Miner',
+    'She cleared her plate.',
+    '50+ books',
+    'Before that I spent six years as a backend engineer.',
+    'Did a bunch of other stuff too.',
+    'never got past my friends',
+    'Some of it worked. Most of it didn\'t.',
+    'Entrepreneurs aren\'t defined by their first 87 ideas.',
+    'five languages',
+    'P.S.',
+  ];
+  let pos = 0;
+  for (const b of beats) {
+    const i = t.indexOf(b, pos);
+    assert.ok(i >= pos, `missing or out of order: ${b}`);
+    pos = i;
+  }
+});
+test('no status labels or shelved/paused wording anywhere', () => {
+  for (const p of allPages()) {
+    const d = html(p);
+    assert.equal(d.querySelectorAll('.status').length, 0, p);
+    assert.doesNotMatch(d.querySelector('body').text, /\((prototype|paused|milestone|shelved)[^)]*\)|never launched|shelved/i, p);
+  }
 });
 test('no eyebrow labels, cards, or icon rows on any page', () => {
   for (const p of allPages()) {
@@ -16,31 +64,23 @@ test('no eyebrow labels, cards, or icon rows on any page', () => {
     assert.equal(d.querySelectorAll('[class*="eyebrow"],[class*="card"],[class*="badge"],[class*="icon-row"]').length, 0, p);
     for (const h of d.querySelectorAll('h1,h2,h3')) {
       const prev = h.previousElementSibling;
-      // A page's one-line summary (spec §5 item 1) sits under the h1 and may precede the first h2; it is a subtitle, not a label.
       if (prev && prev.classList.contains('summary')) continue;
       assert.ok(!prev || !/^(p|span|small|div)$/.test(prev.tagName.toLowerCase()) || prev.text.trim().length > 60, `${p}: label above ${h.text}`);
     }
   }
 });
-test('table of contents links to all five chapters', () => {
-  const hrefs = doc().querySelectorAll('nav.contents a').map(a => a.getAttribute('href'));
-  assert.deepEqual(hrefs, ['#i', '#ii', '#iii', '#iv', '#v']);
-});
-test('contact block has the email, LinkedIn, GitHub, resume', () => {
-  const hrefs = doc().querySelectorAll('a').map(a => a.getAttribute('href'));
-  for (const h of ['mailto:chandni@thinkmocha.com', 'https://www.linkedin.com/in/sonichandni/', 'https://github.com/chandnisoni', '/resume.pdf']) assert.ok(hrefs.includes(h), h);
-});
-test('also-built list is a plain list naming MeetAndGreet', () => {
-  const li = doc().querySelectorAll('.also-built li').map(l => l.text);
-  assert.ok(li.some(t => t.includes('MeetAndGreet') && t.includes('shelved')));
-});
-test('colophon carries the build year and the five-languages line', () => {
-  const c = doc().querySelector('.colophon').text;
-  assert.ok(c.includes(String(new Date().getFullYear())) && /five languages/i.test(c));
-});
-test('masthead is left-aligned typographic, not a centered hero', () => {
-  assert.doesNotMatch(allCss(), /\.masthead[^}]*text-align:\s*center/);
+test('colophon carries the build year and the links', () => {
+  const c = doc().querySelector('.colophon');
+  assert.ok(c.text.includes(String(new Date().getFullYear())));
+  assert.ok(c.querySelector('a[href="/resume.pdf"]'));
 });
 test('nav has no Writing link while there are no published posts', () => {
   assert.equal(doc().querySelectorAll('nav.site a[href^="/writing"]').length, 0);
+});
+test('intro is left-aligned typographic, not a centered hero', async () => {
+  const { readdirSync } = await import('node:fs');
+  const { dist, text } = await import('./helpers.mjs');
+  const css = readdirSync(dist('_astro')).filter(f => f.endsWith('.css')).map(f => text(`_astro/${f}`)).join('');
+  assert.doesNotMatch(css, /\.intro[^}]*text-align:\s*center/);
+  assert.doesNotMatch(css, /main[^}]*text-align:\s*center/);
 });

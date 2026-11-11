@@ -40,13 +40,14 @@ test('appendix pages carry the numerals the cross-check needs', () => {
   for (const m of ['50+', '90%+', '20 hours', '2 hours']) assert.ok(t.includes(m), m);
 });
 
-test('chapter copy states metrics the way the resume does', () => {
+test('home copy states metrics the way the resume does', () => {
   const t = bodyText('index.html');
-  assert.match(t, /processing time fell by 98 percent/i, 'billing metric is a time cut, not "faster"');
-  assert.doesNotMatch(t, /98 percent faster/i);
+  assert.match(t, /cut processing time 98%/, 'billing metric is a time cut, not "faster"');
+  assert.doesNotMatch(t, /98% faster|98 percent faster/i);
+  assert.match(t, /infrastructure costs 80%/);
 });
-test('chapter copy has no build count that the page itself contradicts', () => {
-  assert.doesNotMatch(bodyText('index.html'), /built alone twice/i);
+test('no adjectives about myself', () => {
+  for (const p of allPages()) assert.doesNotMatch(bodyText(p), /\b(driven|visionary|results-oriented|builder at heart|self-starter)\b/i, p);
 });
 test('no relative-time phrases that expire', () => {
   for (const p of allPages()) assert.doesNotMatch(bodyText(p), /\b(earlier|later) this year\b|\blast year\b/i, p);

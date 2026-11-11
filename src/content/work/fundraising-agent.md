@@ -1,7 +1,6 @@
 ---
 title: Fundraising Agent
 summary: Runs a founder's investor outreach, with a human approving every send.
-status: milestone 1 complete
 order: 2
 stack: [n8n Cloud, Next.js, Google Sheets, Anthropic API]
 media: []

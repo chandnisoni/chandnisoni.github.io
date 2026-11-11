@@ -13,21 +13,18 @@ npm run dev                                # http://localhost:4321
 npm test                                   # builds, then checks the built HTML
 ```
 
+## Editing the home page
+
+The home page is one column of text in `src/pages/index.astro`. Edit the copy there. Numbers must match the resume; `tests/08-copy.test.mjs` checks them against `tests/fixtures/consistency-table.md`.
+
+Slots that are empty until the asset exists, all in `src/data/site.ts`:
+- `hero`: a short clip or a storybook spread under the Edgar Miner line.
+- `links.edgarMiner`: the public URL; until set, "Ask for access" is a mailto.
+- `links.ideas`: the ideas list page; until set, the 87-ideas line has no link.
+
+Work pages live in `src/content/work/*.md` (Edgar Miner, Fundraising Agent, ThinkMocha storybooks).
+
 ## Adding a post
-
-Add one markdown file to `src/content/writing/`:
-
-```md
----
-title: A title
-date: 2026-11-10
-summary: One sentence for the index and the feed.
-youtube: dQw4w9WgXcQ   # optional, loads on click
----
-Body in markdown.
-```
-
-Leave `draft: true` in the frontmatter until it is ready. Published posts turn on the Writing link in the nav, the `/writing/` index, and `/rss.xml`.
 
 ## Replacing the resume
 

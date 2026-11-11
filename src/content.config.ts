@@ -9,24 +9,11 @@ const image = z.object({
   height: z.number(),
 });
 
-const chapters = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/chapters' }),
-  schema: z.object({
-    numeral: z.enum(['i', 'ii', 'iii', 'iv', 'v']),
-    title: z.string(),
-    subtitle: z.string(),
-    order: z.number(),
-    image: image.optional(),
-    appendices: z.array(z.string()).optional(),
-  }),
-});
-
 const work = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/work' }),
   schema: z.object({
     title: z.string(),
     summary: z.string(),
-    status: z.enum(['prototype, in progress', 'milestone 1 complete', 'paused']),
     stack: z.array(z.string()),
     order: z.number(),
     media: z
@@ -46,4 +33,4 @@ const writing = defineCollection({
   }),
 });
 
-export const collections = { chapters, work, writing };
+export const collections = { work, writing };

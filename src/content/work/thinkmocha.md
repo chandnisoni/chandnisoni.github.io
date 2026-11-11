@@ -1,7 +1,6 @@
 ---
 title: ThinkMocha storybooks
 summary: Personalized, illustrated storybooks for children, made with AI.
-status: paused
 order: 3
 stack: [Next.js, Express, generative models for text and illustration]
 media: []
