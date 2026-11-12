@@ -5,10 +5,10 @@ import { html, allPages } from './helpers.mjs';
 const doc = () => html('index.html');
 const mainText = () => doc().querySelector('main').text.replace(/\s+/g, ' ').trim();
 
-test('home opens with the 87-ideas line as the headline, said once', () => {
-  assert.equal(doc().querySelector('main h1').text.trim(), "Entrepreneurs aren't defined by their first 87 ideas.");
-  assert.equal(doc().querySelector('main .purpose').text.replace(/\s+/g, ' ').trim(), "I'm Chandni, an engineer who keeps starting companies.");
-  assert.equal(mainText().split('first 87 ideas').length - 1, 1, 'the headline is not repeated in the closing lines');
+test('home opens with the product as the headline and three section headings', () => {
+  assert.equal(doc().querySelector('main h1').text.trim(), "I'm building Edgar Miner.");
+  assert.match(doc().querySelector('main .purpose').text.replace(/\s+/g, ' ').trim(), /^I'm Chandni, an engineer who keeps starting companies\./);
+  assert.deepEqual(doc().querySelectorAll('main h2').map(h => h.text.trim()), ['How ThinkMocha started', 'Earlier work', 'Other projects']);
 });
 test('home is one short column: under 500 words, no chapters, contents, also-built, or running header', () => {
   const words = mainText().split(' ').length;
@@ -30,6 +30,8 @@ test('every claim that has a page links to it', () => {
   for (const h of ['/work/edgar-miner/', '/work/talewriter/', '/work/fundraising-agent/']) assert.ok(hrefs.includes(h), h);
   const access = doc().querySelectorAll('main a').find(a => /ask for access/i.test(a.text));
   assert.ok(access && access.getAttribute('href').startsWith('mailto:chandni@thinkmocha.com'), 'Ask for access is a mailto until Edgar Miner has a URL');
+  const close = doc().querySelectorAll('main .ps a').find(a => a.text.trim() === 'chandni@thinkmocha.com');
+  assert.ok(close && close.getAttribute('href') === 'mailto:chandni@thinkmocha.com', 'the closing line links the email');
 });
 test('the TechCrunch claim links to the Slice article', () => {
   const a = doc().querySelectorAll('main a').find(a => /TechCrunch/.test(a.text));
@@ -39,16 +41,17 @@ test('the TechCrunch claim links to the Slice article', () => {
 test('the beats land in order', () => {
   const t = mainText();
   const beats = [
-    'Right now I\'m building Edgar Miner',
+    'turning SEC filings into structured data',
+    'If you work in investment research',
     'ThinkMocha started somewhere very different.',
-    'She ate the vegetables.',
+    'She ate the vegetables',
     '50+ personalized books',
     'Before that, I spent six years building backend systems.',
-    'plenty of other projects along the way.',
+    'Fundraising Agent automates investor outreach',
     'never made it beyond my friends',
     'Some things have worked. Others haven\'t made it very far.',
     'five languages',
-    'P.S.',
+    'If you research companies through SEC filings',
   ];
   let pos = 0;
   for (const b of beats) {

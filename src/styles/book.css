@@ -19,7 +19,8 @@ nav.site a:hover { color: var(--carrot-ink); text-decoration: underline; }
   letter-spacing: -0.01em;
   text-wrap: balance;
 }
-.intro .purpose { margin-bottom: 2.25rem; font-size: 1.15em; }
+.intro .purpose { font-size: 1.1em; }
+.intro h2 { font-size: 1.05em; margin: 2.75rem 0 0.75rem; color: var(--ink-soft); font-weight: 600; letter-spacing: 0.01em; }
 .intro p { margin-bottom: 1.4em; }
 .intro .lines { margin-top: 2.5rem; }
 .intro .ps { margin-top: 2.5rem; font-size: 0.95em; color: var(--ink-soft); }

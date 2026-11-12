@@ -1,6 +1,6 @@
 export const site = {
   name: 'Chandni Soni',
-  tagline: "Entrepreneurs aren't defined by their first 87 ideas.", // the headline; her line
+  headline: "I'm building Edgar Miner.",
   description: 'Chandni Soni, engineer and founder of ThinkMocha.', // meta description
   email: 'chandni@thinkmocha.com',
   // One artifact under the Edgar Miner line: a short clip or a storybook spread. Null until it exists.
