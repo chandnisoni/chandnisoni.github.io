@@ -15,30 +15,31 @@ const accessText = site.links.edgarMiner ? 'Try it.' : 'Ask for access.';
   <section class="intro">
     <h1>{site.tagline}</h1>
     <p class="purpose">
-      I'm Chandni. I'm still counting.
+      I'm Chandni, an engineer who keeps starting companies.
       {site.links.ideas && <a href={site.links.ideas}>Here's the list.</a>}
     </p>
 
-    <p>Right now I'm building <a href="/work/edgar-miner/">Edgar Miner</a> at ThinkMocha. It reads every SEC filing so you don't have to. <a href={access}>{accessText}</a></p>
+    <p>Right now I'm building <a href="/work/edgar-miner/">Edgar Miner</a> at ThinkMocha. It connects the dots between companies using SEC filings: who supplies whom, who owns what, and where the dependencies are. <a href={access}>{accessText}</a></p>
 
     {site.hero && <Media items={[site.hero]} />}
 
-    <p>One evening I was struggling to get my then three-year-old to eat veggies, so I made her a book with AI where she was the heroine of the veggie world. To my surprise, she ate all the veggies. After that I made customized storybooks for friends and family, diverse and culturally inclusive. That's when I realized the power of personalized storybooks.</p>
+    <p>ThinkMocha started somewhere very different.</p>
 
-    <p>That became <a href="/work/talewriter/">Talewriter</a>, ThinkMocha's first product. I built the whole thing myself and ran a pilot that put 50+ books into a Manhattan preschool. 90%+ of parents and teachers asked for more.</p>
+    <p>One evening, I couldn't convince my then three-year-old to eat her vegetables. So I made her an AI storybook where she was the heroine of a veggie world. She ate the vegetables. I started making books for friends and family, with their children, cultures, and everyday lives in the stories.</p>
 
-    <p>Before that I spent six years as a backend engineer. At Rakuten I led backend for <a href="https://www.rakuten.com/dining">Rakuten Dining</a>, a rewards product with 10,000+ restaurants, and ran the serverless proof of concept that cut the company's infrastructure costs 80%. At <a href="https://www.serverless.com/">Serverless</a> I rebuilt billing on Stripe and cut processing time 98%. Before any of that I shipped a Chrome extension that <a href="https://techcrunch.com/2016/08/23/slices-new-browser-add-on-will-email-you-when-prices-drop/">TechCrunch wrote about</a>.</p>
+    <p>That became <a href="/work/talewriter/">Talewriter</a>. I built it myself and ran a pilot that put 50+ personalized books into a Manhattan preschool. More than 90% of parents and teachers asked for more.</p>
 
-    <p>Did a bunch of other stuff too.</p>
+    <p>Before that, I spent six years building backend systems. At Rakuten, I led backend development for <a href="https://www.rakuten.com/dining">Rakuten Dining</a>, a rewards product with 10,000+ restaurants, and helped teams adopt serverless architecture, reducing infrastructure costs by 80%. At <a href="https://www.serverless.com/">Serverless</a>, I rebuilt billing on Stripe and cut processing time by 98%. Earlier, I shipped a Chrome extension that <a href="https://techcrunch.com/2016/08/23/slices-new-browser-add-on-will-email-you-when-prices-drop/">TechCrunch wrote about</a>.</p>
 
-    <p>Built <a href="/work/fundraising-agent/">Fundraising Agent</a>, an AI agent that runs investor outreach for founders and takes it from 20 hours a week to under 2; built an events app that never got past my friends; won three hackathons with an image-recognition shopping app, an event discovery platform, and an Arduino scoring system; got a Tech MBA from NYU Stern in 2026 while doing the above, and screened deep-tech startups for its accelerator on the side; apply to YC every year.</p>
+    <p>There have been plenty of other projects along the way.</p>
 
-    <p class="lines">
-      Some of it worked.<br />
-      Most of it didn't.
-    </p>
+    <p><a href="/work/fundraising-agent/">Fundraising Agent</a>, which automates investor outreach for founders, bringing the work from 20 hours a week to under two. An events app that never made it beyond my friends. Three hackathon wins involving image recognition, event discovery, and an Arduino scoring system.</p>
 
-    <p>I also speak five languages, which is a better conversation starter than anything above.</p>
+    <p>I earned my Tech MBA at NYU Stern in 2026 and screened deep-tech startups for its accelerator. I also apply to YC every year.</p>
+
+    <p class="lines">Some things have worked. Others haven't made it very far. I usually come away with another question I want to build something around.</p>
+
+    <p>I also speak five languages. Happy to start there.</p>
 
     <p class="ps">P.S. Email me at <a href={`mailto:${site.email}`}>{site.email}</a>. Short emails with a clear ask get answers.</p>
   </section>

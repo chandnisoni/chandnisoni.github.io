@@ -42,9 +42,9 @@ test('appendix pages carry the numerals the cross-check needs', () => {
 
 test('home copy states metrics the way the resume does', () => {
   const t = bodyText('index.html');
-  assert.match(t, /cut processing time 98%/, 'billing metric is a time cut, not "faster"');
+  assert.match(t, /cut processing time (by )?98%/, 'billing metric is a time cut, not "faster"');
   assert.doesNotMatch(t, /98% faster|98 percent faster/i);
-  assert.match(t, /infrastructure costs 80%/);
+  assert.match(t, /infrastructure costs (by )?80%/);
 });
 test('no adjectives about myself', () => {
   for (const p of allPages()) assert.doesNotMatch(bodyText(p), /\b(driven|visionary|results-oriented|builder at heart|self-starter)\b/i, p);

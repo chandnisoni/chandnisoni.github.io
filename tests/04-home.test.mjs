@@ -7,7 +7,7 @@ const mainText = () => doc().querySelector('main').text.replace(/\s+/g, ' ').tri
 
 test('home opens with the 87-ideas line as the headline, said once', () => {
   assert.equal(doc().querySelector('main h1').text.trim(), "Entrepreneurs aren't defined by their first 87 ideas.");
-  assert.equal(doc().querySelector('main .purpose').text.replace(/\s+/g, ' ').trim(), "I'm Chandni. I'm still counting.");
+  assert.equal(doc().querySelector('main .purpose').text.replace(/\s+/g, ' ').trim(), "I'm Chandni, an engineer who keeps starting companies.");
   assert.equal(mainText().split('first 87 ideas').length - 1, 1, 'the headline is not repeated in the closing lines');
 });
 test('home is one short column: under 500 words, no chapters, contents, also-built, or running header', () => {
@@ -40,12 +40,13 @@ test('the beats land in order', () => {
   const t = mainText();
   const beats = [
     'Right now I\'m building Edgar Miner',
-    'she ate all the veggies.',
-    '50+ books',
-    'Before that I spent six years as a backend engineer.',
-    'Did a bunch of other stuff too.',
-    'never got past my friends',
-    'Some of it worked. Most of it didn\'t.',
+    'ThinkMocha started somewhere very different.',
+    'She ate the vegetables.',
+    '50+ personalized books',
+    'Before that, I spent six years building backend systems.',
+    'plenty of other projects along the way.',
+    'never made it beyond my friends',
+    'Some things have worked. Others haven\'t made it very far.',
     'five languages',
     'P.S.',
   ];
