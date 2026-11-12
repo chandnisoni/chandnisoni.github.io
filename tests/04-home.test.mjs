@@ -31,6 +31,11 @@ test('every claim that has a page links to it', () => {
   const access = doc().querySelectorAll('main a').find(a => /ask for access/i.test(a.text));
   assert.ok(access && access.getAttribute('href').startsWith('mailto:chandni@thinkmocha.com'), 'Ask for access is a mailto until Edgar Miner has a URL');
 });
+test('the TechCrunch claim links to the Slice article', () => {
+  const a = doc().querySelectorAll('main a').find(a => /TechCrunch/.test(a.text));
+  assert.ok(a, 'TechCrunch is a link');
+  assert.equal(a.getAttribute('href'), 'https://techcrunch.com/2016/08/23/slices-new-browser-add-on-will-email-you-when-prices-drop/');
+});
 test('the beats land in order', () => {
   const t = mainText();
   const beats = [
