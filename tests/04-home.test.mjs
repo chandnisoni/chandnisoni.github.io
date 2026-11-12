@@ -5,9 +5,10 @@ import { html, allPages } from './helpers.mjs';
 const doc = () => html('index.html');
 const mainText = () => doc().querySelector('main').text.replace(/\s+/g, ' ').trim();
 
-test('home opens with the greeting and the one-line purpose', () => {
-  assert.equal(doc().querySelector('main h1').text.trim(), "Hi, I'm Chandni.");
-  assert.match(mainText(), /I'm an engineer who keeps starting companies\./);
+test('home opens with the 87-ideas line as the headline, said once', () => {
+  assert.equal(doc().querySelector('main h1').text.trim(), "Entrepreneurs aren't defined by their first 87 ideas.");
+  assert.equal(doc().querySelector('main .purpose').text.replace(/\s+/g, ' ').trim(), "I'm Chandni. I'm still counting.");
+  assert.equal(mainText().split('first 87 ideas').length - 1, 1, 'the headline is not repeated in the closing lines');
 });
 test('home is one short column: under 500 words, no chapters, contents, also-built, or running header', () => {
   const words = mainText().split(' ').length;
@@ -40,7 +41,6 @@ test('the beats land in order', () => {
     'Did a bunch of other stuff too.',
     'never got past my friends',
     'Some of it worked. Most of it didn\'t.',
-    'Entrepreneurs aren\'t defined by their first 87 ideas.',
     'five languages',
     'P.S.',
   ];

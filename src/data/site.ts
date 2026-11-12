@@ -1,6 +1,7 @@
 export const site = {
   name: 'Chandni Soni',
-  tagline: "I'm an engineer who keeps starting companies.",
+  tagline: "Entrepreneurs aren't defined by their first 87 ideas.", // the headline; her line
+  description: 'Chandni Soni, engineer and founder of ThinkMocha.', // meta description
   email: 'chandni@thinkmocha.com',
   // One artifact under the Edgar Miner line: a short clip or a storybook spread. Null until it exists.
   hero: null as null | { kind: 'image' | 'video'; src: string; alt: string; caption: string; width: number; height: number },

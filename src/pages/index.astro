@@ -10,11 +10,14 @@ const showWriting = (await getPublishedPosts()).length > 0;
 const access = site.links.edgarMiner ?? `mailto:${site.email}?subject=${encodeURIComponent('Edgar Miner access')}`;
 const accessText = site.links.edgarMiner ? 'Try it.' : 'Ask for access.';
 ---
-<Base title={site.name} description={site.tagline}>
+<Base title={site.name} description={site.description}>
   <Nav slot="nav" showWriting={showWriting} />
   <section class="intro">
-    <h1>Hi, I'm Chandni.</h1>
-    <p class="purpose">{site.tagline}</p>
+    <h1>{site.tagline}</h1>
+    <p class="purpose">
+      I'm Chandni. I'm still counting.
+      {site.links.ideas && <a href={site.links.ideas}>Here's the list.</a>}
+    </p>
 
     <p>Right now I'm building <a href="/work/edgar-miner/">Edgar Miner</a> at ThinkMocha. It reads every SEC filing so you don't have to. <a href={access}>{accessText}</a></p>
 
@@ -32,10 +35,7 @@ const accessText = site.links.edgarMiner ? 'Try it.' : 'Ask for access.';
 
     <p class="lines">
       Some of it worked.<br />
-      Most of it didn't.<br />
-      {site.links.ideas
-        ? <>Entrepreneurs aren't defined by their first 87 ideas. <a href={site.links.ideas}>Here are mine.</a></>
-        : <>Entrepreneurs aren't defined by their first 87 ideas.</>}
+      Most of it didn't.
     </p>
 
     <p>I also speak five languages, which is a better conversation starter than anything above.</p>
