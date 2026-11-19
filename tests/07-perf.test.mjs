@@ -23,8 +23,8 @@ test('fonts use font-display swap', () => {
   assert.match(allCss(), /font-display:\s*swap/);
 });
 
-test('serif fallback is metric-adjusted and the Latin face is preloaded', () => {
-  assert.match(allCss(), /font-family:\s*["']?Literata Fallback["']?[^}]*size-adjust/s);
+test('font fallback is metric-adjusted and the Latin face is preloaded', () => {
+  assert.match(allCss(), /font-family:\s*["']?Quicksand Fallback["']?[^}]*size-adjust/s);
   const link = html('index.html').querySelector('link[rel="preload"][as="font"]');
-  assert.ok(link && /literata-latin-wght-normal.*\.woff2$/.test(link.getAttribute('href')), 'preload link');
+  assert.ok(link && /quicksand-latin-wght-normal.*\.woff2$/.test(link.getAttribute('href')), 'preload link');
 });

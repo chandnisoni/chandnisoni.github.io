@@ -1,26 +1,28 @@
 :root {
-  --paper: #F7F2E8;
-  --paper-deep: #EDE5D6;
-  --ink: #1E1A15;
-  --ink-soft: #5B544A;
-  --rule: #D8CEBC;
-  --carrot: #D9622B;
-  /* The same hue, darkened to 5.4:1 on paper for text-size links. Carrot itself is for large type: numerals in headings, drop caps. */
-  --carrot-ink: #A8441A;
+  /* Butter: a pale yellow paper with a mustard accent. Chosen 2026-11-19 from a picker over the real page. */
+  --paper: #FBF5E4;
+  --paper-deep: #F3E8C9;
+  --ink: #2A2416;
+  --ink-soft: #655B46;
+  --rule: #E6D9B6;
+  --carrot: #E2B04A;
+  /* The accent darkened to 5.4:1 on paper for text-size links. Carrot itself is for large type and surfaces. */
+  --carrot-ink: #8A5A14;
 
-  --font-serif: 'Literata Variable', 'Literata Fallback', Georgia, serif;
-  --font-sans: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+  /* One family everywhere: Quicksand, a rounded geometric sans, after the alphabet card Chandni liked. */
+  --font-serif: 'Quicksand Variable', 'Quicksand Fallback', 'Trebuchet MS', sans-serif;
+  --font-sans: 'Quicksand Variable', 'Quicksand Fallback', 'Trebuchet MS', sans-serif;
 
   --measure: 680px;
   --measure-wide: 900px;
   --gutter: 20px;
-  --leading: 1.55;
+  --leading: 1.6;
 }
 
-/* Georgia, widened to Literata's measure so text does not reflow when the webfont swaps in.
-   Measured in-browser: Literata sets the same line 7% wider than Georgia. */
+/* Trebuchet widened to Quicksand's measure so text does not reflow when the webfont swaps in.
+   Measured in-browser 2026-11-19: Quicksand sets the same line 3% wider than Trebuchet MS. */
 @font-face {
-  font-family: 'Literata Fallback';
-  src: local('Georgia');
-  size-adjust: 107%;
+  font-family: 'Quicksand Fallback';
+  src: local('Trebuchet MS'), local('Arial');
+  size-adjust: 103%;
 }

@@ -9,6 +9,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-serif);
+  font-weight: 500;
   font-size: clamp(17px, 1.6vw, 19px);
   line-height: var(--leading);
   font-variant-numeric: oldstyle-nums;
@@ -32,7 +33,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 h1, h2, h3 {
   font-family: var(--font-serif);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.15;
   text-transform: none;
   letter-spacing: 0;
