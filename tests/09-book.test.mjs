@@ -10,9 +10,21 @@ test('talewriter wraps the pages in a book viewer with prev/next controls', () =
   const d = html(page);
   const book = d.querySelector('[data-book]');
   assert.ok(book, 'data-book');
-  assert.equal(book.querySelectorAll('figure.page').length, 5);
+  assert.equal(book.querySelectorAll('figure.page').length, 11);
   assert.ok(book.querySelector('button[data-prev]') && book.querySelector('button[data-next]'));
   assert.ok(book.querySelector('[data-count]'));
+});
+test("the example book is Eloise's Birthday Adventure, every page of it, and Oliver is gone", () => {
+  const d = html(page);
+  const imgs = [...d.querySelectorAll('[data-book] img')];
+  assert.match(imgs[0].getAttribute('alt'), /Eloise's Birthday Adventure/);
+  assert.match(d.querySelector('[data-book] figcaption').text, /Eloise's Birthday Adventure/);
+  for (const [i, img] of imgs.entries()) {
+    assert.equal(img.getAttribute('src'), `/images/talewriter/eloise-${String(i + 1).padStart(2, '0')}.webp`);
+    assert.ok(img.getAttribute('alt').length > 20, `alt on page ${i + 1}`);
+  }
+  assert.doesNotMatch(d.querySelector('main').text, /Oliver|Anvesha|his face/);
+  assert.match(d.querySelector('main').text, /her face on the cover/);
 });
 test('the viewer is the only script on the page and it respects reduced motion', () => {
   const s = html(page).querySelectorAll('script');
