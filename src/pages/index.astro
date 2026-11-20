@@ -7,7 +7,7 @@ import { site } from '../data/site';
 import { getPublishedPosts } from '../lib/writing';
 
 const showWriting = (await getPublishedPosts()).length > 0;
-const access = site.links.edgarMiner ?? `mailto:${site.email}?subject=${encodeURIComponent('Edgar Miner access')}`;
+const access = site.links.edgarMiner ?? site.links.linkedin;
 const accessText = site.links.edgarMiner ? 'try it' : 'ask for access';
 ---
 <Base title={site.name} description={site.description}>
@@ -40,7 +40,7 @@ const accessText = site.links.edgarMiner ? 'try it' : 'ask for access';
 
     <p>I speak five languages, too. Happy to start there.</p>
 
-    <p class="ps">If any of this overlaps with what you're working on, I'd love to hear from you. <a href={`mailto:${site.email}`}>Email me</a>.</p>
+    <p class="ps">If any of this overlaps with what you're working on, I'd love to hear from you. <a href={site.links.linkedin}>Message me on LinkedIn</a>.</p>
   </section>
   <Colophon slot="colophon" />
 </Base>

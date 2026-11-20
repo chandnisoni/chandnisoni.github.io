@@ -10,4 +10,4 @@ Edgar Miner is that archive, rebuilt so it can be asked a question. Every filing
 
 The record that costs a fund tens of thousands a year today should be something a solo analyst, a founder, or an agent can use on a Tuesday morning. That is the whole idea.
 
-If you research companies for a living, [write to me](mailto:chandni@thinkmocha.com?subject=Edgar%20Miner%20access).
+If you research companies for a living, [find me on LinkedIn](https://www.linkedin.com/in/sonichandni/).
