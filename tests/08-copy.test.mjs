@@ -35,9 +35,13 @@ test('metrics on the site all appear in the LinkedIn consistency table', () => {
     if (site.includes(m)) assert.ok(table.includes(m.replace(' hours', '')), m);
   }
 });
-test('appendix pages carry the numerals the cross-check needs', () => {
-  const t = bodyText('work/talewriter/index.html') + bodyText('work/fundraising-agent/index.html');
-  for (const m of ['50+', '90%+', '20 hours', '2 hours']) assert.ok(t.includes(m), m);
+test('the pilot numbers live on the home page; the Talewriter page is just the book', () => {
+  const home = bodyText('index.html');
+  for (const m of ['50+', '90%']) assert.ok(home.includes(m), m);
+  const tw = bodyText('work/talewriter/index.html');
+  assert.doesNotMatch(tw, /Manhattan preschool pilot|50\+|90%|ThinkMocha/);
+  const fa = bodyText('work/fundraising-agent/index.html');
+  for (const m of ['20 hours', '2 hours']) assert.ok(fa.includes(m), m);
 });
 
 test('home copy states metrics the way the resume does', () => {

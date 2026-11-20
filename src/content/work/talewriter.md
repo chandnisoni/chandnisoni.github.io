@@ -16,4 +16,4 @@ book:
   - { src: /images/talewriter/eloise-10.webp, alt: "Story text: Eloise unlocks the chest with the golden key and finds a crown and a Birthday Adventurer badge", caption: "", width: 1600, height: 1128 }
   - { src: /images/talewriter/eloise-11.webp, alt: "Back in the classroom, Eloise in her new crown blows out the candle on her cupcake while her friends clap", caption: "", width: 1600, height: 1128 }
 ---
-One of the books. It was written and illustrated for one child: her face on the cover, her classroom, her teachers and friends written into the story. In a Manhattan preschool pilot we made 50+ of them, and 90%+ of parents and teachers asked for more. Talewriter is ThinkMocha's first product; the current one is [Edgar Miner](/work/edgar-miner/).
+One of the books. It was written and illustrated for one child: her face on the cover, her classroom, her teachers and friends written into the story.
