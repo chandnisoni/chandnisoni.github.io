@@ -16,26 +16,24 @@ test('home is one short column: under 500 words, no chapters, contents, also-bui
   const d = doc();
   for (const sel of ['section.chapter', 'nav.contents', '.also-built', 'header.running', '.masthead']) assert.equal(d.querySelectorAll(sel).length, 0, sel);
 });
-test('top nav is exactly LinkedIn, GitHub', () => {
+test('top nav is exactly LinkedIn, GitHub, Email', () => {
   const links = doc().querySelectorAll('nav.site a').map(a => [a.text.trim(), a.getAttribute('href')]);
   assert.deepEqual(links, [
     ['LinkedIn', 'https://www.linkedin.com/in/sonichandni/'],
     ['GitHub', 'https://github.com/chandnisoni'],
+    ['Email', 'mailto:chandni@thinkmocha.com'],
   ]);
 });
-test('no page exposes the email address, a mailto link, or a resume link (crawlable)', () => {
-  for (const p of allPages()) {
-    const src = text(p);
-    assert.doesNotMatch(src, /thinkmocha\.com|mailto:|resume\.pdf|Resume\.pdf/i, p);
-  }
+test('no page links to the resume PDF', () => {
+  for (const p of allPages()) assert.doesNotMatch(text(p), /resume\.pdf/i, p);
 });
 test('every claim that has a page links to it', () => {
   const hrefs = doc().querySelectorAll('main a').map(a => a.getAttribute('href'));
   for (const h of ['/work/edgar-miner/', '/work/talewriter/', '/work/fundraising-agent/']) assert.ok(hrefs.includes(h), h);
   const access = doc().querySelectorAll('main a').find(a => /ask for access/i.test(a.text));
-  assert.ok(access && access.getAttribute('href') === 'https://www.linkedin.com/in/sonichandni/', 'Ask for access goes to LinkedIn until Edgar Miner has a URL');
-  const close = doc().querySelectorAll('main .ps a').find(a => a.text.trim() === 'Message me on LinkedIn');
-  assert.ok(close && close.getAttribute('href') === 'https://www.linkedin.com/in/sonichandni/', 'the closing line links LinkedIn');
+  assert.ok(access && access.getAttribute('href').startsWith('mailto:chandni@thinkmocha.com'), 'Ask for access is a mailto until Edgar Miner has a URL');
+  const close = doc().querySelectorAll('main .ps a').find(a => a.text.trim() === 'Email me');
+  assert.ok(close && close.getAttribute('href') === 'mailto:chandni@thinkmocha.com', 'the closing line links the email');
   for (const [text, href] of [['Tech MBA', 'https://www.stern.nyu.edu/programs-admissions/tech-mba'], ['Endless Frontier Labs', 'https://endlessfrontierlabs.com/']]) {
     const a = doc().querySelectorAll('main a').find(a => a.text.trim() === text);
     assert.ok(a && a.getAttribute('href') === href, text);
@@ -92,7 +90,7 @@ test('no eyebrow labels, cards, or icon rows on any page', () => {
 test('colophon carries the build year and the links', () => {
   const c = doc().querySelector('.colophon');
   assert.ok(c.text.includes(String(new Date().getFullYear())));
-  assert.deepEqual(c.querySelectorAll('a').map(a => a.text.trim()), ['LinkedIn', 'GitHub']);
+  assert.deepEqual(c.querySelectorAll('a').map(a => a.text.trim()), ['chandni@thinkmocha.com', 'LinkedIn', 'GitHub']);
 });
 test('nav has no Writing link while there are no published posts', () => {
   assert.equal(doc().querySelectorAll('nav.site a[href^="/writing"]').length, 0);

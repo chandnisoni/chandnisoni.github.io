@@ -6,5 +6,6 @@ const { showWriting } = Astro.props;
 <nav class="site sans" aria-label="Site">
   <a href={site.links.linkedin}>LinkedIn</a>
   <a href={site.links.github}>GitHub</a>
+  <a href={`mailto:${site.email}`}>Email</a>
   {showWriting && <a href="/writing/">Writing</a>}
 </nav>
