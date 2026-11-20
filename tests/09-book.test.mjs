@@ -24,7 +24,7 @@ test("the example book is Eloise's Birthday Adventure, every page of it, and Oli
     assert.ok(img.getAttribute('alt').length > 20, `alt on page ${i + 1}`);
   }
   assert.doesNotMatch(d.querySelector('main').text, /Oliver|Anvesha|his face/);
-  assert.match(d.querySelector('main').text, /her face on the cover/);
+  assert.match(d.querySelector('main').text, /Here’s one made for a little girl, with her face on the cover and her classroom, teachers, and friends woven into the story\./);
 });
 test('the viewer is the only script on the page and it respects reduced motion', () => {
   const s = html(page).querySelectorAll('script');
