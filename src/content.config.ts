@@ -20,6 +20,8 @@ const work = defineCollection({
       .default([]),
     // A page-flip book instead of stacked media; the first page is the cover.
     book: z.array(image).optional(),
+    // A file the visitor can save, shown under the book.
+    download: z.string().optional(),
   }),
 });
 

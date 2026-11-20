@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readdirSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { dist, html, text } from './helpers.mjs';
 
 const page = 'work/talewriter/index.html';
@@ -50,4 +50,16 @@ test('the cover is the largest paint: fetchpriority high, preloaded, and every p
     assert.match(img.getAttribute('srcset') ?? '', /-800\.webp 800w, .*\.webp 1600w/);
     assert.ok(img.getAttribute('sizes'));
   }
+});
+test('the book can be downloaded as a PDF from the page', () => {
+  const d = html(page);
+  const a = d.querySelector('a[href$=".pdf"][download]');
+  assert.ok(a, 'download link');
+  assert.match(a.text, /Download the book/);
+  assert.equal(a.getAttribute('href'), '/talewriter/eloise-birthday-adventure.pdf');
+  const buf = readFileSync(dist('talewriter/eloise-birthday-adventure.pdf'));
+  assert.equal(buf.subarray(0, 5).toString(), '%PDF-');
+  assert.ok(buf.length > 500_000 && buf.length < 6_000_000, `pdf size ${buf.length}`);
+  // the link sits after the viewer, not buried in the prose above it
+  assert.ok(d.querySelector('[data-book] ~ p a[download]'), 'link follows the book');
 });

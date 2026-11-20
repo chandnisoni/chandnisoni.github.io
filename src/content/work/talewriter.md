@@ -2,6 +2,7 @@
 title: Talewriter
 summary: Personalized, illustrated storybooks for children, made with AI.
 order: 3
+download: /talewriter/eloise-birthday-adventure.pdf
 book:
   - { src: /images/talewriter/eloise-01.webp, alt: "Cover of Eloise's Birthday Adventure: a girl in a purple dress and a tiara in a classroom hung with bunting and balloons", caption: "Eloise's Birthday Adventure. A treasure hunt through her preschool on her fourth birthday, with her classmates written into the story.", width: 1600, height: 1128 }
   - { src: /images/talewriter/eloise-02.webp, alt: "Eloise reaches for a rolled-up scroll tied with a purple ribbon on the teacher's desk in the decorated classroom", caption: "", width: 1600, height: 1128 }

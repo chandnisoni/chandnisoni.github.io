@@ -28,6 +28,7 @@ const showWriting = (await getPublishedPosts()).length > 0;
     <p class="summary">{data.summary}</p>
     <Content />
     {data.book ? <Book pages={data.book} title={`${data.title} book`} /> : <Media items={data.media} />}
+    {data.download && <p class="sans"><a href={data.download} download>Download the book (PDF, 2 MB)</a></p>}
     <p><a class="back sans" href="/">← Back</a></p>
   </article>
   <Colophon slot="colophon" />
