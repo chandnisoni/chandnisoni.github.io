@@ -10,6 +10,9 @@ test('home opens with the product as the headline, its one-line pitch, and no se
   assert.equal(doc().querySelector('main .purpose').text.replace(/\s+/g, ' ').trim(), 'Point-in-time financials. Company relationships traced to the source.');
   assert.equal(doc().querySelectorAll('main h2').length, 0);
 });
+test('home meta description names Edgar Miner, not ThinkMocha', () => {
+  assert.equal(doc().querySelector('meta[name="description"]').getAttribute('content'), 'Chandni Soni, engineer and founder of Edgar Miner.');
+});
 test('home is one short column: under 500 words, no chapters, contents, also-built, or running header', () => {
   const words = mainText().split(' ').length;
   assert.ok(words < 500, `${words} words`);
