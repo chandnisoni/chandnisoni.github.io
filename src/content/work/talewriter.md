@@ -6,7 +6,7 @@ download: /talewriter/eloise-birthday-adventure.pdf
 book:
   - { src: /images/talewriter/eloise-01.webp, alt: "Cover of Eloise's Birthday Adventure: a girl in a purple dress and a tiara in a classroom hung with bunting and balloons", caption: "Eloise's Birthday Adventure. A treasure hunt through her preschool on her fourth birthday, with her classmates written into the story.", width: 1600, height: 1128 }
   - { src: /images/talewriter/eloise-02.webp, alt: "Eloise reaches for a rolled-up scroll tied with a purple ribbon on the teacher's desk in the decorated classroom", caption: "", width: 1600, height: 1128 }
-  - { src: /images/talewriter/eloise-03.webp, alt: "Eloise holds up the unrolled treasure map while her classmates crowd around and point at it", caption: "", width: 1600, height: 1128 }
+  - { src: /images/talewriter/eloise-03.webp, alt: "Eloise holds up a crayon map of the preschool, reading corner to art table to playground, while her classmates crowd around and point", caption: "", width: 1600, height: 1128 }
   - { src: /images/talewriter/eloise-04.webp, alt: "Story text: it's a treasure map, and the first clue points to the reading corner", caption: "", width: 1600, height: 1128 }
   - { src: /images/talewriter/eloise-05.webp, alt: "Felix, a curly-haired boy, sits among cushions in the reading corner holding up a tiny golden key", caption: "", width: 1600, height: 1128 }
   - { src: /images/talewriter/eloise-06.webp, alt: "Max and Arlo at the art center table with a finished jigsaw puzzle showing the rooftop playground", caption: "", width: 1600, height: 1128 }
