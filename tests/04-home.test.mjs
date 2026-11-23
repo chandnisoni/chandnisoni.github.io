@@ -93,7 +93,8 @@ test('no eyebrow labels, cards, or icon rows on any page', () => {
 test('colophon carries the build year and the links', () => {
   const c = doc().querySelector('.colophon');
   assert.ok(c.text.includes(String(new Date().getFullYear())));
-  assert.deepEqual(c.querySelectorAll('a').map(a => a.text.trim()), ['chandni@thinkmocha.com', 'LinkedIn', 'GitHub']);
+  assert.deepEqual(c.querySelectorAll('a').map(a => a.text.trim()), ['LinkedIn', 'GitHub']);
+  assert.ok(!c.text.includes('@'), 'the footer does not print the address');
 });
 test('nav has no Writing link while there are no published posts', () => {
   assert.equal(doc().querySelectorAll('nav.site a[href^="/writing"]').length, 0);
