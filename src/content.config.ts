@@ -16,7 +16,7 @@ const work = defineCollection({
     summary: z.string(),
     order: z.number(),
     media: z
-      .array(image.extend({ kind: z.enum(['image', 'video']) }))
+      .array(image.extend({ kind: z.enum(['image', 'video']), poster: z.string().optional() }))
       .default([]),
     // A page-flip book instead of stacked media; the first page is the cover.
     book: z.array(image).optional(),

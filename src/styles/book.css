@@ -64,7 +64,8 @@ aside.note {
 
 /* Work pages */
 .work .figure + .figure { margin-top: 0.75rem; }
-.work .figure img { border: 1px solid var(--rule); }
+.work .figure img, .work .figure video { border: 1px solid var(--rule); }
+.figure video { display: block; width: 100%; height: auto; background: var(--deep, #F3E8C9); }
 .work figcaption:empty { display: none; }
 .work { margin-top: 2.5rem; }
 .work h1 { margin-bottom: 0.5rem; }

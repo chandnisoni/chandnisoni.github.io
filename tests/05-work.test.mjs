@@ -34,3 +34,17 @@ test('a work entry pointing at a missing image fails the build', () => {
   assert.match(r.stderr + r.stdout, /Missing image: \/images\/does-not-exist\.webp/);
 });
 
+test('fundraising agent shows the narrated demo recording: a real file, a poster, controls, sound on, no loop', () => {
+  const d = html('work/fundraising-agent/index.html');
+  const v = d.querySelector('main video');
+  assert.ok(v, 'a video element');
+  assert.equal(v.getAttribute('src'), '/videos/fundraising-agent.mp4');
+  assert.ok(existsSync(dist('videos/fundraising-agent.mp4')), 'mp4 shipped');
+  assert.equal(v.getAttribute('poster'), '/images/fundraising-agent-poster.webp');
+  assert.ok(existsSync(dist('images/fundraising-agent-poster.webp')), 'poster shipped');
+  assert.ok(v.hasAttribute('controls'));
+  assert.equal(v.getAttribute('preload'), 'metadata');
+  for (const a of ['muted', 'loop', 'autoplay']) assert.ok(!v.hasAttribute(a), `no ${a}: the demo is narrated`);
+  assert.ok(v.getAttribute('aria-label')?.length > 20);
+  assert.match(d.querySelector('main figcaption').text, /\S{10,}/);
+});

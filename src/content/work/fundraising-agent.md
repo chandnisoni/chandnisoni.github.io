@@ -2,7 +2,8 @@
 title: Fundraising Agent
 summary: Runs a founder's investor outreach, with a human approving every send.
 order: 2
-media: []
+media:
+  - { kind: video, src: /videos/fundraising-agent.mp4, poster: /images/fundraising-agent-poster.webp, alt: "Screen recording of Fundraising Agent: setting up a raise, the investor pipeline, a drafted email, and the morning list of next actions", caption: "A five-minute walk-through, with narration.", width: 1600, height: 958 }
 ---
 Raising a round is a second full-time job. Founders spend 20 hours a week on it, and most of that time goes to questions that have answers somewhere in their own contacts: who in my network, or my network's network, can get me to the right investor? Who writes checks of the size I need? Who actually has money to deploy right now? Which warm connection has gone cold since the last round?
 
