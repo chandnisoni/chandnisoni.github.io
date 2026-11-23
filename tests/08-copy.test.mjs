@@ -43,7 +43,7 @@ test('the pilot numbers live on the home page; the Talewriter page is just the b
   const fa = bodyText('work/fundraising-agent/index.html');
   assert.ok(fa.includes('40+ hours a week'), 'the figure she gives in the demo');
   assert.doesNotMatch(fa, /20 hours|under 2 hours/, 'old figure gone');
-  assert.ok(fa.includes("A founder's time belongs on the product, not on the raise."));
+  assert.match(fa, /A founder[’']s time belongs on the product, not on the raise\./);
 });
 
 test('home copy states metrics the way the resume does', () => {
