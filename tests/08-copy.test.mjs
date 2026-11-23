@@ -41,7 +41,9 @@ test('the pilot numbers live on the home page; the Talewriter page is just the b
   const tw = bodyText('work/talewriter/index.html');
   assert.doesNotMatch(tw, /Manhattan preschool pilot|50\+|90%|ThinkMocha/);
   const fa = bodyText('work/fundraising-agent/index.html');
-  for (const m of ['20 hours', '2 hours']) assert.ok(fa.includes(m), m);
+  assert.ok(fa.includes('40+ hours a week'), 'the figure she gives in the demo');
+  assert.doesNotMatch(fa, /20 hours|under 2 hours/, 'old figure gone');
+  assert.ok(fa.includes("A founder's time belongs on the product, not on the raise."));
 });
 
 test('home copy states metrics the way the resume does', () => {
