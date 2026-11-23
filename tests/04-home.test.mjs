@@ -42,10 +42,17 @@ test('every claim that has a page links to it', () => {
     assert.ok(a && a.getAttribute('href') === href, text);
   }
 });
-test('the TechCrunch claim links to the Slice article', () => {
-  const a = doc().querySelectorAll('main a').find(a => /TechCrunch/.test(a.text));
-  assert.ok(a, 'TechCrunch is a link');
-  assert.equal(a.getAttribute('href'), 'https://techcrunch.com/2016/08/23/slices-new-browser-add-on-will-email-you-when-prices-drop/');
+test('the TechCrunch and Lifehacker claims link to the Slice Watch articles', () => {
+  const links = doc().querySelectorAll('main a');
+  const tc = links.find(a => a.text.trim() === 'TechCrunch');
+  assert.ok(tc, 'TechCrunch is a link');
+  assert.equal(tc.getAttribute('href'), 'https://techcrunch.com/2016/08/23/slices-new-browser-add-on-will-email-you-when-prices-drop/');
+  const lh = links.find(a => a.text.trim() === 'Lifehacker');
+  assert.ok(lh, 'Lifehacker is a link');
+  assert.equal(lh.getAttribute('href'), 'https://lifehacker.com/slice-watch-for-chrome-will-send-you-price-alert-emails-1785669278');
+});
+test('no page says how many years she spent as an engineer', () => {
+  for (const p of allPages()) assert.doesNotMatch(text(p), /six years/i, p);
 });
 test('the beats land in order', () => {
   const t = mainText();
@@ -56,7 +63,7 @@ test('the beats land in order', () => {
     'Before Edgar Miner, I built Talewriter.',
     'she ate the vegetables',
     '50+ personalized books',
-    'Before that, I spent six years building backend systems.',
+    'Before that, I built backend systems.',
     'Chrome extension at Slice',
     'happens outside the code',
     'Endless Frontier Labs',
